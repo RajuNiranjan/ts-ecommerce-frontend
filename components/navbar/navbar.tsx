@@ -17,7 +17,7 @@ const NavBar = () => {
     setShowNavMenu(!showNavMenu);
   };
   return (
-    <nav className="h-10 sm:h-[80px] bg-white flex justify-between items-center shadow-lg px-5 sm:px-14">
+    <nav className="h-14 sm:h-[80px] bg-white flex justify-between items-center shadow-lg px-5 sm:px-14 sticky top-0 z-30">
       <div>
         <h1 className="sm:text-[40px]">Logs</h1>
       </div>
@@ -67,7 +67,7 @@ const NavBar = () => {
           {!showNavMenu ? <MenuIcon /> : <CloseIcon />}
         </div>
         {showNavMenu ? (
-          <div className="bg-white border w-max h-max right-0 top-10 shadow-xl rounded-md absolute transform duration-1000">
+          <div className="bg-white border w-max h-max right-0 top-[45px] shadow-xl rounded-md absolute transform duration-1000">
             <ul className="">
               <li className="flex items-center p-2 gap-1 hover:bg-slate-200">
                 <NotificationsIcon className="text-lg" />
