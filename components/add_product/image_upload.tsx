@@ -17,19 +17,23 @@ const ImageUpload = () => {
   };
 
   return (
-    <div className="w-[500px] shadow-lg rounded bg-white p-5">
+    <div className="w-[400px] sm:w-[400px] md:w-[600px] lg:w-[350px] xl:w-[500px] shadow-lg rounded bg-white p-5">
       <h1 className="font-semibold text-[18px]">Add Image</h1>
       <div className="my-10">
         <div className="border border-dashed border-gray-400 h-[250px] flex justify-center items-center flex-col rounded-md">
           <InsertPhotoOutlinedIcon className="text-[55px] text-gray-500" />
           <div className="flex items-center justify-center gap-2">
-            <FileUploadOutlinedIcon className="text-4xl text-[#196FE1]" />
-            <span className="text-[18px]">Select your image here </span>{" "}
-            {/* <input type="file" placeholder="Browse" /> */}
+            <FileUploadOutlinedIcon className="text-3xl sm:text-4xl lg:text-xl xl:text-4xl text-[#196FE1]" />
+            <span className="text-[16px] sm:text-[18px] lg:text-[12px] xl:text-[18px]">
+              Select your image here{" "}
+            </span>{" "}
             <label
               htmlFor="fileInput"
-              className="relative text-[#196FE1] cursor-pointer">
-              <span className="font-semibold text-[18px]"> Browse </span>{" "}
+              className="relative text-[#196FE1] cursor-pointer flex justify-center items-center">
+              <span className="font-semibold text-[16px] sm:text-[18px] lg:text-[12px] xl:text-[18px] ">
+                {" "}
+                Browse{" "}
+              </span>{" "}
               <input
                 type="file"
                 id="fileInput"

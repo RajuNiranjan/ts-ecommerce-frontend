@@ -22,8 +22,7 @@ const Input: React.FC<ChildProps> = ({
   return (
     <div className="flex flex-col gap-1">
       <label className="capitalize font-normal text-[16px]">{labelName}</label>
-      <div className="border border-blue-300 flex items-center p-2 rounded-md">
-        {/* <span>icon</span> */}
+      <div className="border border-blue-300 flex items-center p-2 rounded-md w-full">
         <input
           onChange={onChange}
           type={type}

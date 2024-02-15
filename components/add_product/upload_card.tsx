@@ -10,7 +10,7 @@ interface UploadCardProps {
 const UploadCard: React.FC<UploadCardProps> = ({ image }) => {
   return (
     <div className="border p-4 rounded-md border-[#196FE1] flex justify-between items-center">
-      <div className="flex items-center justify-center gap-2">
+      <div className="flex-1 flex items-center justify-center gap-2">
         <Image
           src={URL.createObjectURL(image)}
           alt="img"
@@ -18,8 +18,10 @@ const UploadCard: React.FC<UploadCardProps> = ({ image }) => {
           height={100}
         />
         <div>
-          <p className="font-normal text-[16px]">{image?.name}</p>
-          <p className="font-normal text-[14px] text-[#333333]">
+          <p className="font-normal text-[10px] sm:text-[12px] lg:text-[12px] xl:text-[16px]">
+            {image?.name}
+          </p>
+          <p className="font-normal text-[10px] sm:text-[12px]  lg:text-[12px] xl:text-[16px] text-[#333333]">
             {Math.round(image.size / 1024)}kb
           </p>
         </div>

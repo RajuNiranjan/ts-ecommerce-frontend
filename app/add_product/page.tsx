@@ -6,11 +6,11 @@ const AddProduct = () => {
   return (
     <div>
       <h1 className="text-4xl font-semibold">Add Product</h1>
-      <div className="grid xl:grid-cols-12 gap-5 mt-10">
-        <div className="col-span-7">
+      <div className="grid lg:grid-cols-12 xl:grid-cols-12 gap-5 sm:gap-5 md:gap-5 2xl:gap-5 mt-10">
+        <div className="col-span-6 sm:col-span-7">
           <ProducDetails />
         </div>
-        <div className="col-span-4">
+        <div className="col-span-6 lg:col-span-5 2xl:col-span-4">
           <ImageUpload />
         </div>
       </div>

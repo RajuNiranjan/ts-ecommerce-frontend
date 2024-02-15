@@ -17,7 +17,7 @@ const NavBar = () => {
     setShowNavMenu(!showNavMenu);
   };
   return (
-    <nav className="h-14 sm:h-[80px] bg-white flex justify-between items-center shadow-lg px-5 sm:px-14 sticky top-0 z-30">
+    <nav className="py-4 sm:h-[80px] bg-white flex justify-between items-center shadow-lg px-5 sm:px-14 sticky top-0 z-30">
       <div>
         <h1 className="sm:text-[40px]">Logs</h1>
       </div>

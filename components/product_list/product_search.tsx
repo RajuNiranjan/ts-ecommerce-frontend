@@ -10,7 +10,7 @@ const Productsearch = () => {
     navigate.push("/add_product");
   };
   return (
-    <div className="flex w-fullsm:w-full lg:w-[800px] gap-2 md:gap-5 xl:w-[993px] items-center justify-between my-14">
+    <div className="flex w-full sm:w-full lg:w-[800px] gap-2 md:gap-5 xl:w-[993px] items-center justify-between my-14">
       <div className="w-[200px] sm:w-[300px] lg:w-[400px] xl:w-[600px] border  border-blue-400 sm:h-10 rounded-full flex items-center px-3">
         <SearchIcon className="text-slate-500 text-[14px] h-7 sm:text-xl" />
         <input
@@ -25,10 +25,12 @@ const Productsearch = () => {
         </button>
       </div>
       <div
-        className="font-normal sm:text-[12px] md:text-[14px] sm:w-[120px] md:w-[160px] lg:w-44  text-[10px] rounded-full  w-[100px] h-[30px] text-sm bg-[#196FE1] sm:h-10 md:px-6 flex justify-center items-center text-white sm:rounded-full gap-1"
+        className="font-normal  sm:w-[120px] md:w-[160px] lg:w-44   rounded-full  w-[100px] h-[30px] bg-[#196FE1] sm:h-10 md:px-6 flex justify-center items-center text-white sm:rounded-full gap-1"
         onClick={navgateToAddProduct}>
         <ControlPointIcon className="text-[14px] sm:text-xl" />
-        <button>Add product</button>
+        <button className="text-[10px] sm:text-[12px] md:text-[14px]">
+          Add product
+        </button>
       </div>
     </div>
   );

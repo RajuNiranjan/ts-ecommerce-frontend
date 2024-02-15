@@ -1,64 +1,63 @@
 import React from "react";
-import Home from "@/asserts/home.webp";
-import Orders from "@/asserts/Orders.webp";
-import Product from "@/asserts/Products.webp";
-import Add from "@/asserts/Add_product.webp";
-import Transaction from "@/asserts/Transactions.webp";
-import Review from "@/asserts/Reviews.webp";
-import Settings from "@/asserts/Settings.webp";
 import Image from "next/image";
 import Link from "next/link";
+import HomeIcon from "@mui/icons-material/Home";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import WidgetsIcon from "@mui/icons-material/Widgets";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 const Icons = [
   {
     id: 1,
-    icons: Home,
+    icons: <HomeIcon />,
     iconName: "Home",
     path: "/",
   },
   {
     id: 2,
-    icons: Orders,
+    icons: <ShoppingBagIcon />,
     iconName: "Orders",
     path: "/",
   },
   {
     id: 4,
-    icons: Add,
+    icons: <AddCircleIcon />,
     iconName: "Add",
-    path: "/",
+    path: "/add_product",
   },
   {
     id: 3,
-    icons: Product,
+    icons: <WidgetsIcon />,
     iconName: "Product",
-    path: "/",
+    path: "/product_list",
   },
 
   {
     id: 5,
-    icons: Transaction,
+    icons: <AttachMoneyIcon />,
     iconName: "History",
+    path: "/",
+  },
+  {
+    id: 5,
+    icons: <SettingsIcon />,
+    iconName: "Settings",
     path: "/",
   },
 ];
 
 const BottomMenu = () => {
   return (
-    <nav className="bg-[#81B4F8] h-20 shadow-xl grid grid-cols-5 gap-5 px-5">
+    <nav className="bg-[#81B4F8] h-14 shadow-xl grid grid-cols-12 gap-5  w-full">
       {Icons?.map((item, index) => (
         <Link
           href={item?.path}
           key={index}
-          className="flex flex-col juc justify-center items-center">
-          <Image
-            src={item?.icons}
-            alt="icon"
-            width={40}
-            height={40}
-            className="w-7 h-7"
-          />
-          <span className="font-medium text-white tracking-[1px]">
+          className="flex flex-col justify-center items-center col-span-2 hover:bg-blue-800">
+          <span className="text-xl text-white">{item?.icons}</span>
+          <span className="font-medium text-white text-[12px] tracking-[1px] ">
             {item.iconName}
           </span>
         </Link>

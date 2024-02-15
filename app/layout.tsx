@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="h-screen flex flex-col justify-between">
+        <div className="h-screen relative">
           <NavBar />
           <div className="flex">
             <div>
@@ -28,7 +28,7 @@ export default function RootLayout({
             </div>
             <div className="p-2 md:p-10">{children}</div>
           </div>
-          <div className="sm:hidden">
+          <div className="sm:hidden  bottom-0 fixed">
             <BottomMenu />
           </div>
         </div>
