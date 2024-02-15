@@ -50,12 +50,12 @@ const Icons = [
 
 const BottomMenu = () => {
   return (
-    <nav className="bg-[#81B4F8] h-14 shadow-xl grid grid-cols-12 gap-5  w-full">
+    <nav className="bg-[#2c7feb] h-14 shadow-xl grid grid-cols-12 gap-5  w-full">
       {Icons?.map((item, index) => (
         <Link
           href={item?.path}
           key={index}
-          className="flex flex-col justify-center items-center col-span-2 hover:bg-blue-800">
+          className="flex flex-col justify-center items-center col-span-2 hover:bg-blue-400">
           <span className="text-xl text-white">{item?.icons}</span>
           <span className="font-medium text-white text-[12px] tracking-[1px] ">
             {item.iconName}

@@ -61,15 +61,20 @@ const FullMenu = [
 
 const SideBar = () => {
   const [showSideMenu, setSideMenu] = useState(false);
+
   const handleToggleSideMenu = () => {
     setSideMenu(!showSideMenu);
   };
+
   return (
     <>
-      <nav className="hidden sticky top-14 w-[64px] bg-[#81B4F8] h-screen sm:flex flex-col items-center py-8 gap-20 relative">
+      <nav
+        className={`hidden sticky top-14 w-[64px] bg-[#81B4F8] h-screen sm:flex flex-col items-center py-8 gap-20 relative`}>
         <div
           className="bg-white rounded-full p-2 w-10 h-10 transition-all duration-500"
-          onClick={handleToggleSideMenu}>
+          onClick={() => {
+            handleToggleSideMenu();
+          }}>
           <Image
             src={LockOpen}
             alt="lock open"
@@ -81,20 +86,21 @@ const SideBar = () => {
         <div className="flex flex-col gap-8">
           {Icons?.map((icon, index) => (
             <Image
+              onClick={handleToggleSideMenu}
               key={index}
               src={icon}
               alt="lock open"
               width={50}
               height={50}
-              className="w-6 h-6"
+              className="w-6 h-6 cursor-pointer"
             />
           ))}
         </div>
 
         {showSideMenu ? (
-          <div className="absolute  w-[220px] bg-[#81B4F8] h-screen flex flex-col items-center py-8 gap-20 top-0 translate-x-14 transition-all duration-1000">
+          <div className="absolute  w-[150px] bg-[#81B4F8] h-screen flex flex-col items-center py-8 gap-20 top-0 translate-x-10 duration-500 ">
             <div
-              className="bg-white rounded-full p-2 w-10 h-10 transition-all duration-500"
+              className="bg-white rounded-full p-2 w-10 h-10"
               onClick={handleToggleSideMenu}>
               <Image
                 src={Locked}
@@ -109,7 +115,7 @@ const SideBar = () => {
                 <Link
                   href={item?.path}
                   key={index}
-                  className="flex gap-2 justify-start text-white items-center">
+                  className="flex gap-2 justify-start text-white items-center px-3">
                   <Image
                     src={item?.icons}
                     alt="lock open"

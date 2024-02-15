@@ -102,7 +102,7 @@ const ProducDetails: React.FC = () => {
     setFormData({});
   };
   return (
-    <div className="w-[400px] sm:w-[550px] md:w-[600px] lg:w-[500px] xl:w-[650px]  2xl:w-[766px] bg-white p-5 rounded-md shadow-lg ">
+    <div className="w-[360px] sm:w-[550px] md:w-[600px] lg:w-[500px] xl:w-[650px]  2xl:w-[766px] bg-white p-5 rounded-md shadow-lg ">
       <h1 className="font-semibold text-[18px]">Product Details</h1>
       <form className="my-5" onSubmit={onSubmit}>
         <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4">
@@ -136,12 +136,12 @@ const ProducDetails: React.FC = () => {
           </div>
         </div>
         <div className="flex gap-10">
-          <button className="bg-[#B3B3B3] px-3 py-1 text-[12px] sm:px-3 sm:py-2  lg:px-6 lg:py-3 rounded-full font-normal sm:text-[14px] lg:text-[16px] text-white">
+          <button className="bg-[#B3B3B3] px-3 py-2 text-[12px] sm:px-3 sm:py-2  lg:px-6 lg:py-3 rounded-full font-normal sm:text-[14px] lg:text-[16px] text-white">
             Save Draft
           </button>
           <button
             type="submit"
-            className="bg-[#196FE1] px-3 py-1 text-[12px] sm:px-3 sm:py-2 sm:text-[14px]  lg:px-6 lg:py-3 rounded-full font-normal lg:text-[16px] text-white">
+            className="bg-[#196FE1] px-3 py-2 text-[12px] sm:px-3 sm:py-2 sm:text-[14px]  lg:px-6 lg:py-3 rounded-full font-normal lg:text-[16px] text-white">
             Add Product
           </button>
         </div>

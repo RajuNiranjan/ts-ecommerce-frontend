@@ -17,7 +17,7 @@ const ImageUpload = () => {
   };
 
   return (
-    <div className="w-[400px] sm:w-[400px] md:w-[600px] lg:w-[350px] xl:w-[500px] shadow-lg rounded bg-white p-5">
+    <div className="w-[360px] sm:w-[400px] md:w-[600px] lg:w-[350px] xl:w-[500px] shadow-lg rounded bg-white p-5">
       <h1 className="font-semibold text-[18px]">Add Image</h1>
       <div className="my-10">
         <div className="border border-dashed border-gray-400 h-[250px] flex justify-center items-center flex-col rounded-md">
