@@ -31,13 +31,13 @@ const FullMenu = [
     id: 3,
     icons: Product,
     iconName: "Product",
-    path: "/",
+    path: "/product_list",
   },
   {
     id: 4,
     icons: Add,
     iconName: "Add",
-    path: "/",
+    path: "/add_product",
   },
   {
     id: 5,
@@ -66,7 +66,7 @@ const SideBar = () => {
   };
   return (
     <>
-      <nav className="hidden w-[64px] bg-[#81B4F8] h-screen sm:flex flex-col items-center py-8 gap-20 relative">
+      <nav className="hidden sticky top-14 w-[64px] bg-[#81B4F8] h-screen sm:flex flex-col items-center py-8 gap-20 relative">
         <div
           className="bg-white rounded-full p-2 w-10 h-10 transition-all duration-500"
           onClick={handleToggleSideMenu}>
