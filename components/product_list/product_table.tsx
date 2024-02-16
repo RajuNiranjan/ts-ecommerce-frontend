@@ -1,7 +1,7 @@
 import React from "react";
 import Tables from "./table";
-import PaginationRounded from "./pagination";
-import Select from "./select";
+import PaginationRounded from "@/ui/pagination";
+import Select from "@/ui/select";
 
 interface Select {
   name: string;

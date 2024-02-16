@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import SearchIcon from "@mui/icons-material/Search";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import { useRouter } from "next/navigation";
+import { CiSearch } from "react-icons/ci";
 
 const Productsearch = () => {
   const navigate = useRouter();
@@ -23,7 +23,7 @@ const Productsearch = () => {
   return (
     <div className="flex w-full flex-col sm:flex-row sm:w-full md:w-[600px] lg:w-[800px] gap-2 md:gap-5 xl:w-[993px] items-center justify-between my-14">
       <div className="w-[350px] sm:w-[300px] lg:w-[400px] xl:w-[600px] border  border-blue-400 sm:h-10 rounded-full flex items-center px-3">
-        <SearchIcon className="text-slate-500 text-[14px] h-7 sm:text-xl" />
+        <CiSearch className="text-slate-500 text-[14px] h-7 sm:text-xl" />
         <input
           onChange={handleSearchInputChange}
           type="text"

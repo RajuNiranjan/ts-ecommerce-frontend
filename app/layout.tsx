@@ -26,7 +26,7 @@ export default function RootLayout({
             <div>
               <SideBar />
             </div>
-            <div className="p-2 md:p-10">{children}</div>
+            <div className="p-2 md:p-10 w-full">{children}</div>
           </div>
           <div className="sm:hidden  bottom-0 fixed">
             <BottomMenu />

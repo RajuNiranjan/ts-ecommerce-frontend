@@ -29,7 +29,7 @@ const Input: React.FC<ChildProps> = ({
           name={name}
           value={value}
           placeholder={placeholder}
-          className="focus:outline-none flex-1"
+          className="focus:outline-none flex-1 bg-transparent"
         />
         <span>{rightIcon}</span>
       </div>
