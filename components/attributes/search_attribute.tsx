@@ -1,11 +1,10 @@
-import React from 'react'
+import React from "react";
 import { CiSearch } from "react-icons/ci";
 
 const SearchAttribute = () => {
-
   return (
     <div className="relative">
-      <div className="flex items-center  border border-blue-300 rounded-md p-2 gap-2 my-5">
+      <div className="flex items-center bg-[#eaeaea] border border-blue-300 rounded-md p-2 gap-2 my-5">
         <CiSearch className="text-xl" />
         <input
           type="text"
@@ -14,7 +13,6 @@ const SearchAttribute = () => {
           className="focus:outline-none bg-transparent flex-1"
         />
       </div>
-      
     </div>
   );
 };
