@@ -22,7 +22,7 @@ const Tables: React.FC<TablesProps> = ({ body }) => {
     <TableContainer>
       <Table
         aria-label="simple table"
-        className="md:w-[600px] lg:w-[800px] xl:[1200px] 2xl:w-[1250px]">
+        className="md:w-[600px] lg:w-[800px] xl:[1200px] 2xl:w-full">
         <TableHead>
           <TableRow sx={{ padding: 0 }}>
             <TableCell className="font-semibold text-[10px] sm:text-[12px]   lg:text-[14px] xl:text-[14px]">
@@ -42,13 +42,13 @@ const Tables: React.FC<TablesProps> = ({ body }) => {
         <TableBody>
           {body.map((item, index) => (
             <TableRow key={index}>
-              <TableCell className="md:text-[12px] text-[10px] sm:text-[12px] lg:text-[14px] fkex  justify-center items-center">
+              <TableCell className="md:text-[12px] text-[10px] sm:text-[12px] lg:text-[14px]">
                 {item?.name}
               </TableCell>
               <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px]">
                 {item?.description}
               </TableCell>
-              <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px] flex gap-5">
+              <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px] flex flex-row gap-3">
                 {item?.value?.map((item, index) => (
                   <li
                     className="list-none bg-gray-300  px-3 rounded-sm text-white"

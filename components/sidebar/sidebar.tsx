@@ -69,7 +69,7 @@ const SideBar = () => {
   return (
     <>
       <nav
-        className={`hidden fixed h-full w-[64px] bg-[#81B4F8]  sm:flex flex-col items-center py-8 gap-20 sm:relative z-10  `}>
+        className={`hidden fixed h-screen w-[64px] bg-[#81B4F8]  sm:flex flex-col items-center py-8 gap-20 sm:relative z-10  `}>
         <div
           className="bg-white rounded-full p-2 w-10 h-10 "
           onClick={() => {
