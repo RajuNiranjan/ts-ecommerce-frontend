@@ -19,7 +19,7 @@ const FullMenu = [
     id: 1,
     icons: Home,
     iconName: "Home",
-    path: "/",
+    path: "/attributes",
   },
   {
     id: 2,
@@ -69,9 +69,9 @@ const SideBar = () => {
   return (
     <>
       <nav
-        className={`hidden sticky top-14 w-[64px] bg-[#81B4F8] h-screen sm:flex flex-col items-center py-8 gap-20 sm:relative z-30`}>
+        className={`hidden fixed h-full w-[64px] bg-[#81B4F8]  sm:flex flex-col items-center py-8 gap-20 sm:relative z-10  `}>
         <div
-          className="bg-white rounded-full p-2 w-10 h-10 transition-all duration-500"
+          className="bg-white rounded-full p-2 w-10 h-10 "
           onClick={() => {
             handleToggleSideMenu();
           }}>
@@ -98,7 +98,8 @@ const SideBar = () => {
         </div>
 
         {showSideMenu ? (
-          <div className="absolute  w-[150px] bg-[#81B4F8] h-screen flex flex-col items-center py-8 gap-20 top-0 translate-x-10 duration-500 ">
+          <div
+            className={`absolute  w-[150px] bg-[#81B4F8] h-full flex flex-col items-center py-8 gap-20 top-0 left-0`}>
             <div
               className="bg-white rounded-full p-2 w-10 h-10"
               onClick={handleToggleSideMenu}>
