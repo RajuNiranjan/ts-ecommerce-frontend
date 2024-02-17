@@ -14,6 +14,8 @@ interface InputItem {
   placeholder: string;
   value: string;
   name: string;
+  height?: string;
+  width?: string;
   rightIcon?: React.ReactNode;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -26,6 +28,7 @@ const InputData: InputItem[] = [
     placeholder: "Category Name",
     value: "New Attribute Name",
     name: "New Attribute Name",
+    width: "332px",
   },
   {
     id: "Value",
@@ -34,6 +37,7 @@ const InputData: InputItem[] = [
     placeholder: "None",
     value: "value",
     name: "value",
+    height: "80px",
   },
   {
     id: "Description",
@@ -42,6 +46,7 @@ const InputData: InputItem[] = [
     placeholder: "None",
     value: "Description",
     name: "Description",
+    height: "80px",
   },
 ];
 
@@ -85,6 +90,8 @@ const AddNewAttribute: React.FC<AddNewAttributeProps> = ({
               value={formData[item?.name] || ""}
               placeholder={item?.placeholder}
               name={item?.name}
+              height={item?.height}
+              width={item?.width}
               type={item?.type}
               rightIcon={item?.rightIcon}
               onChange={onChange}

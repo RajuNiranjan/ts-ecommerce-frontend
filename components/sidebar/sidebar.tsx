@@ -69,7 +69,7 @@ const SideBar = () => {
   return (
     <>
       <nav
-        className={`hidden sticky top-14 w-[64px] bg-[#81B4F8] h-screen sm:flex flex-col items-center py-8 gap-20 relative`}>
+        className={`hidden sticky top-14 w-[64px] bg-[#81B4F8] h-screen sm:flex flex-col items-center py-8 gap-20 sm:relative z-30`}>
         <div
           className="bg-white rounded-full p-2 w-10 h-10 transition-all duration-500"
           onClick={() => {

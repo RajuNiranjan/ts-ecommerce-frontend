@@ -6,6 +6,8 @@ interface ChildProps {
   placeholder: string;
   value: string;
   name: string;
+  height?: string;
+  width?: string;
   rightIcon?: React.ReactNode;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -18,11 +20,19 @@ const Input: React.FC<ChildProps> = ({
   rightIcon,
   value,
   onChange,
+  height,
+  width,
 }) => {
+  const inputStyle: React.CSSProperties = {
+    height: height || "auto",
+    width: width || "auto",
+  };
   return (
     <div className="flex flex-col gap-1">
       <label className="capitalize font-normal text-[16px]">{labelName}</label>
-      <div className="border border-blue-300 flex items-center p-2 rounded-md w-full">
+      <div
+        className="border border-blue-300 flex items-center p-2 rounded-md w-full"
+        style={inputStyle}>
         <input
           onChange={onChange}
           type={type}
