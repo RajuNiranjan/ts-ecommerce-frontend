@@ -57,18 +57,15 @@ const Tables: React.FC<TablesProps> = ({ body }) => {
                   </li>
                 ))}
               </TableCell> */}
-              <TableCell>
-                <ul className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px] flex flex-row gap-3 ">
-                  <li className="list-none bg-gray-300  px-3 rounded-sm text-white w-max">
-                    S
+              <TableCell className="flex gap-4">
+                {item?.value?.map((item, index) => (
+                  // <ul className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px] bg-red-500 grid grid-cols-4 "></ul>
+                  <li
+                    key={index}
+                    className="list-none  bg-gray-300  px-3 rounded-sm text-white w-max">
+                    {item}
                   </li>
-                  <li className="list-none bg-gray-300  px-3 rounded-sm text-white w-max">
-                    M
-                  </li>
-                  <li className="list-none bg-gray-300  px-3 rounded-sm text-white w-max">
-                    XL
-                  </li>
-                </ul>
+                ))}
               </TableCell>
               <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px]">
                 {item?.action}
