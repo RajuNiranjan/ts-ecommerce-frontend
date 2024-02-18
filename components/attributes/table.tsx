@@ -48,16 +48,20 @@ const Tables: React.FC<TablesProps> = ({ body }) => {
               <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px]">
                 {item?.description}
               </TableCell>
-              {/* <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px] flex flex-row gap-3 ">
-                {item?.value?.map((item, index) => (
-                  <li
-                    className="list-none bg-gray-300  px-3 rounded-sm text-white w-max"
-                    key={index}>
-                    {item}
+              <TableCell>
+                <ul
+                  key={index}
+                  className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px] flex gap-3">
+                  <li className="list-none  col-span-1 bg-gray-300  px-3 rounded-sm text-white w-max">
+                    S
                   </li>
-                ))}
-              </TableCell> */}
-              <TableCell className="flex gap-4">
+                  <li className="list-none  col-span-1 bg-gray-300  px-3 rounded-sm text-white w-max">
+                    XL
+                  </li>
+                </ul>
+              </TableCell>
+
+              {/* <TableCell className="flex gap-4">
                 {item?.value?.map((item, index) => (
                   <ul
                     key={index}
@@ -67,7 +71,7 @@ const Tables: React.FC<TablesProps> = ({ body }) => {
                     </li>
                   </ul>
                 ))}
-              </TableCell>
+              </TableCell> */}
               <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px]">
                 {item?.action}
               </TableCell>
