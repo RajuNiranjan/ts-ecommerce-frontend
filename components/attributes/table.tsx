@@ -48,10 +48,10 @@ const Tables: React.FC<TablesProps> = ({ body }) => {
               <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px]">
                 {item?.description}
               </TableCell>
-              <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px] flex flex-row gap-3">
+              <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px] flex flex-row gap-3 ">
                 {item?.value?.map((item, index) => (
                   <li
-                    className="list-none bg-gray-300  px-3 rounded-sm text-white"
+                    className="list-none bg-gray-300  px-3 rounded-sm text-white w-max"
                     key={index}>
                     {item}
                   </li>

@@ -10,6 +10,9 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import CloseIcon from "@mui/icons-material/Close";
+import { IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
+import PopupMenu from "./popup_menu";
 
 const NavBar = () => {
   const [showNavMenu, setShowNavMenu] = useState(false);
@@ -45,20 +48,28 @@ const NavBar = () => {
             />
           </div>
         </div>
-        <div className="flex justify-center items-center gap-4 font-medium text-lg">
-          <div className="relative">
-            <Image
-              src={User}
-              alt="user"
-              width={50}
-              height={50}
-              className="rounded-full w-10 h-10 object-container"
-            />
-            <span className="absolute w-3 h-3 bg-green-500 rounded-full border-white right-0 bottom-0 border-2 " />
+        <div className="relative">
+          <div
+            onClick={handleShowNavMenu}
+            className="flex cursor-pointer  justify-center items-center gap-4 font-medium text-lg">
+            <div className="relative">
+              <Image
+                src={User}
+                alt="user"
+                width={50}
+                height={50}
+                className="rounded-full w-10 h-10 object-container"
+              />
+              <span className="absolute w-3 h-3 bg-green-500 rounded-full border-white right-0 bottom-0 border-2 " />
+            </div>
+            <div className="flex gap-2 items-center ">
+              <h1>Admin</h1>
+              {showNavMenu ? <IoIosArrowUp /> : <IoIosArrowDown />}
+            </div>
           </div>
-          <div className="flex gap-2 items-center ">
-            <h1>Admin</h1>
-            <Image src={DownArrow} alt="arrow" width={10} height={10} />
+          <div
+            className={`absolute -top-4 -left-2  translate-x-[200px]  transition-all duration-1000`}>
+            {showNavMenu ? <PopupMenu /> : ""}
           </div>
         </div>
       </div>
