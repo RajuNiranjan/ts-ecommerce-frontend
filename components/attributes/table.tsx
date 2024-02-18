@@ -59,12 +59,13 @@ const Tables: React.FC<TablesProps> = ({ body }) => {
               </TableCell> */}
               <TableCell className="flex gap-4">
                 {item?.value?.map((item, index) => (
-                  // <ul className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px] bg-red-500 grid grid-cols-4 "></ul>
-                  <li
+                  <ul
                     key={index}
-                    className="list-none  bg-gray-300  px-3 rounded-sm text-white w-max">
-                    {item}
-                  </li>
+                    className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px] grid grid-cols-1">
+                    <li className="list-none  col-span-1 bg-gray-300  px-3 rounded-sm text-white w-max">
+                      {item}
+                    </li>
+                  </ul>
                 ))}
               </TableCell>
               <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px]">
