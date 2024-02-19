@@ -43,7 +43,7 @@ const FullMenu = [
     id: 5,
     icons: Transaction,
     iconName: "Transaction",
-    path: "/",
+    path: "/transactions_history",
   },
   {
     id: 6,
