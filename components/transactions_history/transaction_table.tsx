@@ -9,7 +9,7 @@ import TableRow from "@mui/material/TableRow";
 interface Transactions {
   transactionId: number;
   receverName: string;
-  receiverId: number;
+  receverId: number;
   date: string;
   action: JSX.Element;
 }
@@ -51,6 +51,9 @@ const TransactionTable: React.FC<TablesProps> = ({ body }) => {
               </TableCell>
               <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px]">
                 {item?.receverName}
+              </TableCell>
+              <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px]">
+                {item?.receverId}
               </TableCell>
               <TableCell>{item?.date}</TableCell>
               <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px]">

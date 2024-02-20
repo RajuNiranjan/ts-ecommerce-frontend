@@ -25,13 +25,13 @@ const body: Attribute[] = [
     name: "Size",
     description: "Different size for clothes",
     value: ["S", "M", "XL", "XXL"],
-    action: <p className="font-bold text-blue-500">Edit</p>,
+    action: <p className="font-bold bg-blue-500 text-semibold">View Details</p>,
   },
   {
     name: "Color",
     description: "childer, Watches",
     value: ["Red", "Blue", "Green", "Black", "Yellow"],
-    action: <p className="font-bold text-blue-500">Edit</p>,
+    action: <p className="font-bold bg-blue-500 text-semibold">View Details</p>,
   },
 ];
 

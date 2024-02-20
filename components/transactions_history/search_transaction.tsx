@@ -1,7 +1,7 @@
 import React from "react";
 import { CiSearch } from "react-icons/ci";
 
-const SearchAttribute = () => {
+const SearchTrasaction = () => {
   return (
     <div className="relative">
       <div className="flex items-center bg-[#eaeaea] border border-blue-300 rounded-md p-2 gap-2 my-5">
@@ -17,4 +17,4 @@ const SearchAttribute = () => {
   );
 };
 
-export default SearchAttribute;
+export default SearchTrasaction;

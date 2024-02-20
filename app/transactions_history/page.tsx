@@ -1,36 +1,76 @@
-"use client";
-import AddNewAttribute from "@/components/add_new_attribute/add_new_attribute";
-import SearchAttribute from "@/components/attributes/search_attribute";
+import SearchTrasaction from "@/components/transactions_history/search_transaction";
 import TransactionTable from "@/components/transactions_history/transaction_table";
-import React, { useState } from "react";
+import Select from "@/ui/select";
+import React from "react";
 
-const Attributes = () => {
-  const [showAddAttribute, setShowAssAttribute] = useState<Boolean>(false);
+interface searchTransactionSelector {
+  name: string;
+}
 
-  const handleOpenAddAttribute = () => {
-    setShowAssAttribute(!showAddAttribute);
-  };
+const selector: searchTransactionSelector[] = [
+  {
+    name: "Recent",
+  },
+  {
+    name: "Month",
+  },
+];
 
+interface Transactions {
+  transactionId: number;
+  receverName: string;
+  receverId: number;
+  date: string;
+  action: JSX.Element;
+}
+
+const body: Transactions[] = [
+  {
+    transactionId: 54651,
+    receverName: "Different size for clothes",
+    receverId: 6545,
+    date: "15 May 2023 8:59 pm",
+    action: (
+      <p className="bg-blue-500 font-semibold rounded-full text-white p-1 text-center cursor-pointer">
+        View Details
+      </p>
+    ),
+  },
+  {
+    transactionId: 35431,
+    receverName: "childer, Watches",
+    receverId: 35431,
+    date: "15 May 2023 8:59 pm",
+    action: (
+      <p className="bg-blue-500 font-semibold rounded-full text-white p-1 text-center cursor-pointer">
+        View Details
+      </p>
+    ),
+  },
+];
+
+const Transactions = () => {
   return (
-    <div className="w-full relative">
-      <div className="flex justify-between items-center">
-        <h1 className="text-4xl font-semibold">Transaction History</h1>
+    <div>
+      <div>
+        <h1 className="text-3xl font-semibold">Transactions History</h1>
       </div>
-      <div className="w-full bg-white rounded-md shadow-md p-5 my-10">
-        <SearchAttribute />
-        <TransactionTable />
-      </div>
-      <div className="absolute -top-10 flex justify-center items-center left-20 ">
-        {showAddAttribute ? (
-          <div className="w-[1000px] h-[500px] rounded-md shadow-xl backdrop-blur-md p-10  mt-10">
-            <AddNewAttribute handleOpenAddAttribute={handleOpenAddAttribute} />
+      <div className="bg-white shadow-md rounded-md p-5">
+        <SearchTrasaction />
+        <div className="flex gap-5 my-5 items-center">
+          <p>Stored By</p>
+          <div className="flex gap-3">
+            {selector?.map((item, index) => (
+              <Select key={index} name={item?.name} />
+            ))}
           </div>
-        ) : (
-          ""
-        )}
+        </div>
+        <div className="my-10">
+          <TransactionTable body={body} />
+        </div>
       </div>
     </div>
   );
 };
 
-export default Attributes;
+export default Transactions;
