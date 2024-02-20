@@ -5,6 +5,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import Link from "next/link";
 
 interface Transactions {
   transactionId: number;
@@ -12,6 +13,7 @@ interface Transactions {
   receverId: number;
   date: string;
   action: JSX.Element;
+  path: string;
 }
 
 interface TablesProps {
@@ -57,7 +59,7 @@ const TransactionTable: React.FC<TablesProps> = ({ body }) => {
               </TableCell>
               <TableCell>{item?.date}</TableCell>
               <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px]">
-                {item?.action}
+                <Link href={item?.path}>{item?.action}</Link>
               </TableCell>
             </TableRow>
           ))}

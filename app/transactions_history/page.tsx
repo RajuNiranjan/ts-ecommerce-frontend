@@ -22,6 +22,7 @@ interface Transactions {
   receverId: number;
   date: string;
   action: JSX.Element;
+  path: string;
 }
 
 const body: Transactions[] = [
@@ -31,10 +32,11 @@ const body: Transactions[] = [
     receverId: 6545,
     date: "15 May 2023 8:59 pm",
     action: (
-      <p className="bg-blue-500 font-semibold rounded-full text-white p-1 text-center cursor-pointer">
+      <p className="bg-blue-500 font-semibold rounded-full text-white p-1 px-3 text-center cursor-pointer w-max">
         View Details
       </p>
     ),
+    path: "/transaction_details",
   },
   {
     transactionId: 35431,
@@ -42,10 +44,11 @@ const body: Transactions[] = [
     receverId: 35431,
     date: "15 May 2023 8:59 pm",
     action: (
-      <p className="bg-blue-500 font-semibold rounded-full text-white p-1 text-center cursor-pointer">
+      <p className="bg-blue-500 font-semibold rounded-full text-white p-1 px-3 w-max text-center cursor-pointer">
         View Details
       </p>
     ),
+    path: "/transaction_details",
   },
 ];
 
