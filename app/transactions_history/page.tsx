@@ -55,7 +55,7 @@ const body: Transactions[] = [
 const Transactions = () => {
   return (
     <div>
-      <div>
+      <div className="my-10">
         <h1 className="text-3xl font-semibold">Transactions History</h1>
       </div>
       <div className="bg-white shadow-md rounded-md p-5">

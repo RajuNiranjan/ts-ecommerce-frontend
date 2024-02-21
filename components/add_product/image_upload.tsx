@@ -4,6 +4,7 @@ import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import UploadCard from "./upload_card";
 import { CldUploadButton } from "next-cloudinary";
+import CldUpload from "@/ui/cld_upload";
 
 const ImageUpload = () => {
   const [selectImage, setSelectImage] = useState<File | null>(null);
@@ -43,7 +44,6 @@ const ImageUpload = () => {
                 onChange={handleImageChange}
               />
             </label>
-            {/* <CldUploadButton uploadPreset="<Upload Preset>" /> */}
           </div>
         </div>
         <div className="mt-5 grid grid-cols-1 gap-2">

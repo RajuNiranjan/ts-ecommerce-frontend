@@ -1,5 +1,7 @@
+import AddVariable from "@/components/add_product/add_variable";
 import ImageUpload from "@/components/add_product/image_upload";
 import ProducDetails from "@/components/add_product/product_details";
+import VariableList from "@/components/add_product/variable_list";
 import React from "react";
 
 const AddProduct = () => {
@@ -12,6 +14,14 @@ const AddProduct = () => {
         </div>
         <div className="col-span-6 lg:col-span-5 2xl:col-span-4">
           <ImageUpload />
+        </div>
+      </div>
+      <div className="grid grid-cols-12 gap-5 ">
+        <div className=" col-span-7 ">
+          <AddVariable />
+        </div>
+        <div className=" col-span-5">
+          <VariableList />
         </div>
       </div>
     </div>
