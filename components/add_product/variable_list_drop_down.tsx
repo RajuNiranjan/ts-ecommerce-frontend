@@ -12,7 +12,7 @@ const VariableListDropDown = () => {
   return (
     <div>
       <div className="w-full h-10 bg-blue-300 rounded-md flex justify-between items-center px-3">
-        <h1 className="font-medium">19-10-2001</h1>
+        <h1 className="font-medium">Colors</h1>
         <div onClick={handleShowDropMenu} className="cursor-pointer">
           {showData ? (
             <FaAngleUp className="text-xl" />
