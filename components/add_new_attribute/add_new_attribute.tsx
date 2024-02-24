@@ -1,5 +1,6 @@
 "use client";
 import Input from "@/ui/input";
+import TextArea from "@/ui/text_area";
 import React, { useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 
@@ -29,6 +30,7 @@ const InputData: InputItem[] = [
     value: "New Attribute Name",
     name: "New Attribute Name",
     width: "332px",
+    height: "50px",
   },
   {
     id: "Value",
@@ -38,6 +40,7 @@ const InputData: InputItem[] = [
     value: "value",
     name: "value",
     height: "80px",
+    width: "100%",
   },
   {
     id: "Description",
@@ -47,6 +50,7 @@ const InputData: InputItem[] = [
     value: "Description",
     name: "Description",
     height: "80px",
+    width: "100%",
   },
 ];
 
@@ -84,7 +88,19 @@ const AddNewAttribute: React.FC<AddNewAttributeProps> = ({
       <form onSubmit={onSubmit}>
         <div className="flex flex-col gap-3 my-5">
           {InputData?.map((item, index) => (
-            <Input
+            // <Input
+            //   key={index}
+            //   labelName={item?.labelName}
+            //   value={formData[item?.name] || ""}
+            //   placeholder={item?.placeholder}
+            //   name={item?.name}
+            //   height={item?.height}
+            //   width={item?.width}
+            //   type={item?.type}
+            //   rightIcon={item?.rightIcon}
+            //   onChange={onChange}
+            // />
+            <TextArea
               key={index}
               labelName={item?.labelName}
               value={formData[item?.name] || ""}

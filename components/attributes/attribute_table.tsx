@@ -25,13 +25,21 @@ const body: Attribute[] = [
     name: "Size",
     description: "Different size for clothes",
     value: ["S", "M", "XL", "XXL"],
-    action: <p className="font-bold bg-blue-500 text-semibold">View Details</p>,
+    action: (
+      <p className="font-bold bg-blue-500 text-semibold w-max text-white px-3 py-1 rounded-xl cursor-pointer">
+        View Details
+      </p>
+    ),
   },
   {
     name: "Color",
     description: "childer, Watches",
     value: ["Red", "Blue", "Green", "Black", "Yellow"],
-    action: <p className="font-bold bg-blue-500 text-semibold">View Details</p>,
+    action: (
+      <p className="font-bold bg-blue-500 w-max text-white px-3 py-1 rounded-xl text-semibold cursor-pointer">
+        View Details
+      </p>
+    ),
   },
 ];
 
@@ -40,9 +48,11 @@ const AttributeTable = () => {
     <div>
       <Tables body={body} />
       <div className="flex flex-col gap-5 sm:flex-row justify-between px-5 py-10">
-        {bottom?.map((item, index) => (
-          <Select key={index} name={item?.name} />
-        ))}
+        <div>
+          {bottom?.map((item, index) => (
+            <Select key={index} name={item?.name} />
+          ))}
+        </div>
         <PaginationRounded />
       </div>
     </div>
