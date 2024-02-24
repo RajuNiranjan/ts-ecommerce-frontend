@@ -19,7 +19,7 @@ const AddProduct = () => {
               <ImageUpload />
             </div>
           </div>
-          <div className="grid grid-cols-12 gap-5 ">
+          <div className="grid lg:grid-cols-12 xl:grid-cols-12 gap-5 sm:gap-5 md:gap-5 2xl:gap-5 mt-10 ">
             <div className=" col-span-7 ">
               <VarationDetails />
             </div>

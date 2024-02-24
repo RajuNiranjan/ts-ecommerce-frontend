@@ -5,10 +5,10 @@ import { RxCrossCircled } from "react-icons/rx";
 const VarationDetails = () => {
   return (
     <div>
-      <div className="w-full bg-white shadow-md border rounded-md my-10 p-5">
+      <div className="w-[320px] sm:w-[550px] md:w-[600px] lg:w-[500px] xl:w-[650px]  2xl:w-[766px] bg-white p-5 rounded-md shadow-lg ">
         <h1 className="text-xl font-semibold">Variation Details</h1>
         <form className="flex flex-col gap-5 mt-5">
-          <div className="flex justify-between items-center   gap-5">
+          <div className="grid xl:grid-cols-2 gap-5">
             <div className="flex-1 flex flex-col gap-1">
               <label className="capitalize font-normal text-[16px]">
                 Variable Name

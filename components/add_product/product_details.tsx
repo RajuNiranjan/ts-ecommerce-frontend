@@ -1,153 +1,75 @@
-"use client";
-import Input from "@/ui/input";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import React from "react";
+import { MdPhoto } from "react-icons/md";
+import { RxCrossCircled } from "react-icons/rx";
 
-import React, { useState } from "react";
-
-interface InputItem {
-  id?: string;
-  type: string;
-  labelName: string;
-  placeholder: string;
-  value: string;
-  name: string;
-  rightIcon?: React.ReactNode;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const InputData: InputItem[] = [
-  {
-    id: "Product Name",
-    type: "text",
-    labelName: "Product Name",
-    placeholder: "men",
-    value: "prductname",
-    name: "prductname",
-  },
-  {
-    id: "Stock Keeping Unit (SKU)",
-    type: "text",
-    labelName: "Stock Keeping Unit (SKU)",
-    placeholder: "Shoe",
-    value: "units",
-    name: "units",
-  },
-  {
-    id: "Category",
-    type: "text",
-    labelName: "Category",
-    placeholder: "men",
-    value: "category",
-    name: "category",
-  },
-  {
-    id: "Sub Category",
-    type: "text",
-    labelName: "Sub Category",
-    placeholder: "Shoe",
-    value: "subCategory",
-    name: "subCategory",
-  },
-  {
-    id: "stock Qty",
-    type: "text",
-    labelName: "stock Qty",
-    placeholder: "1000",
-    value: "stockQty",
-    name: "stockQty",
-  },
-  {
-    id: "Products type",
-    type: "text",
-    labelName: "Products type",
-    placeholder: "External Product",
-    value: "productType",
-    name: "productType",
-    rightIcon: <KeyboardArrowDownIcon />,
-  },
-  {
-    id: "price(MRP)",
-    type: "text",
-    labelName: "price(MRP)",
-    placeholder: "1231",
-    value: "price",
-    name: "price",
-  },
-  {
-    id: "selling price/discount",
-    type: "text",
-    labelName: "selling price/discount",
-    placeholder: "1000/15%",
-    value: "discount",
-    name: "discount",
-  },
-];
-
-const ProducDetails: React.FC = () => {
-  const [formData, setFormData] = useState<Record<string, string>>({});
-
-  const onChange = (e: React.ChangeEvent<any>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Form Data", formData);
-
-    localStorage.setItem("formData", JSON.stringify(formData));
-
-    setFormData({});
-  };
+const VarationDetails = () => {
   return (
-    <div className="w-[360px] sm:w-[550px] md:w-[600px] lg:w-[500px] xl:w-[650px]  2xl:w-[766px] bg-white p-5 rounded-md shadow-lg ">
-      <h1 className="font-semibold text-[18px]">Product Details</h1>
-      <form className="my-5" onSubmit={onSubmit}>
-        <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4">
-          {InputData?.map((item, index) => (
-            <Input
-              key={index}
-              labelName={item?.labelName}
-              value={formData[item?.name] || ""}
-              placeholder={item?.placeholder}
-              name={item?.name}
-              type={item?.type}
-              rightIcon={item?.rightIcon}
-              onChange={onChange}
-            />
-          ))}
-        </div>
-        <div className="flex flex-col gap-5 my-5">
-          <div className="flex flex-col">
+    <div>
+      <div className="w-[320px] sm:w-[550px] md:w-[600px] lg:w-[500px] xl:w-[650px]  2xl:w-[766px] bg-white p-5 rounded-md shadow-lg ">
+        <h1 className="text-xl font-semibold">Variation Details</h1>
+        <form className="flex flex-col gap-5 mt-5">
+          <div className="grid xl:grid-cols-2 gap-5">
+            <div className="flex-1 flex flex-col gap-1">
+              <label className="capitalize font-normal text-[16px]">
+                Variable Name
+              </label>
+              <div className="border border-blue-300 flex items-center p-2 rounded-md w-full">
+                <input
+                  className="focus:outline-none flex-1 bg-transparent"
+                  placeholder="enter variable name"
+                />
+              </div>
+            </div>
+            <div className="flex-1  flex flex-col gap-1">
+              <label className="capitalize font-normal text-[16px]">
+                Property
+              </label>
+              <div className="border border-blue-300 flex items-center p-2 rounded-md w-full">
+                <input
+                  className="focus:outline-none flex-1 bg-transparent"
+                  placeholder="enter property"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-1">
             <label>Description</label>
             <textarea
-              className="border rounded-md h-24 focus:outline-none p-2 border-blue-300 resize-none"
-              placeholder="Write description..."
-            />
+              className="border rounded-md p-2 h-20 border-blue-300 resize-none focus:outline-none"
+              placeholder="enter description"></textarea>
           </div>
-          <div className="flex flex-col">
-            <label>Tags</label>
+          <div className="border h-20 p-3 rounded-md border-blue-300 flex justify-between items-center">
+            {/* <label>Tags</label>
             <textarea
-              className="border rounded-md h-24 focus:outline-none p-2 border-blue-300 resize-none"
-              placeholder="Write description..."
-            />
+              name=""
+              id=""
+              className="border rounded-md p-2 h-20 border-blue-300 resize-none focus:outline-none"
+              placeholder="enter Tags"></textarea> */}
+            <div className="flex justify-between items-center gap-1">
+              <MdPhoto className="text-4xl" />
+              <div>
+                <p className="text-[16px] font-normal">image.png</p>
+                <p className="text-[14px] font-normal">231 KB</p>
+              </div>
+            </div>
+            <div>
+              <RxCrossCircled className="text-red-500 text-2xl cursor-pointer" />
+            </div>
           </div>
-        </div>
-        <div className="flex gap-10">
-          <button className="bg-[#B3B3B3] px-3 py-2 text-[12px] sm:px-3 sm:py-2  lg:px-6 lg:py-3 rounded-full font-normal sm:text-[14px] lg:text-[16px] text-white">
-            Save Draft
-          </button>
-          <button
-            type="submit"
-            className="bg-[#196FE1] px-3 py-2 text-[12px] sm:px-3 sm:py-2 sm:text-[14px]  lg:px-6 lg:py-3 rounded-full font-normal lg:text-[16px] text-white">
-            Add Product
-          </button>
-        </div>
-      </form>
+          <div className="flex gap-10">
+            <button className="bg-[#B3B3B3] px-3 py-2 text-[12px] sm:px-3 sm:py-2  lg:px-6 lg:py-3 rounded-full font-normal sm:text-[14px] lg:text-[16px] text-white xl:px-10">
+              Cancle
+            </button>
+            <button
+              type="submit"
+              className="bg-[#196FE1] px-3 py-2 text-[12px] sm:px-3 sm:py-2 sm:text-[14px]  lg:px-6 lg:py-3 rounded-full font-normal lg:text-[16px] text-white">
+              Add Variable
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default ProducDetails;
+export default VarationDetails;

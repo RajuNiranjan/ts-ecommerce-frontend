@@ -30,17 +30,19 @@ const bottom: Select[] = [
 
 const ProductTable = () => {
   return (
-    <div className="bg-white  rounded-md shadow-md p-5 w-[370px] sm:w-[580px] md:w-[600px] lg:w-[850px] xl:[1200px] 2xl:w-[1250px]">
-      <div className="flex gap-5 mb-5">
+    <div className="bg-white  rounded-md shadow-md p-5 w-full sm:w-[580px] md:w-[600px] lg:w-[850px] xl:[1200px] 2xl:w-[1250px]">
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-5 mb-5">
         {select?.map((item, index) => (
           <Select key={index} name={item?.name} />
         ))}
       </div>
       <Tables />
       <div className="flex flex-col gap-5 sm:flex-row justify-between px-5 py-10">
-        {bottom?.map((item, index) => (
-          <Select key={index} name={item?.name} />
-        ))}
+        <div>
+          {bottom?.map((item, index) => (
+            <Select key={index} name={item?.name} />
+          ))}
+        </div>
         <PaginationRounded />
       </div>
     </div>

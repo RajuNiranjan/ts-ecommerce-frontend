@@ -7,7 +7,9 @@ const ProductList = () => {
   return (
     <div className="mb-20 sm:mb-0">
       <h1 className="text-[36px] font-semibold">Product List</h1>
-      <Productsearch />
+      <div>
+        <Productsearch />
+      </div>
       <ProductTable />
     </div>
   );

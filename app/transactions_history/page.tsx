@@ -54,22 +54,24 @@ const body: Transactions[] = [
 
 const Transactions = () => {
   return (
-    <div>
-      <div className="my-10">
-        <h1 className="text-3xl font-semibold">Transactions History</h1>
-      </div>
-      <div className="bg-white shadow-md rounded-md p-5">
-        <SearchTrasaction />
-        <div className="flex gap-5 my-5 items-center">
-          <p>Stored By</p>
-          <div className="flex gap-3">
-            {selector?.map((item, index) => (
-              <Select key={index} name={item?.name} />
-            ))}
-          </div>
+    <div className="w-full min-h-screen bg-[#ebeef0]">
+      <div className="w-full pt-[100px] pl-[90px] pr-[20px] pb-[20px]">
+        <div className="mb-5 xl:mb-0">
+          <h1 className="text-3xl font-semibold">Transactions History</h1>
         </div>
-        <div className="my-10">
-          <TransactionTable body={body} />
+        <div className="bg-white shadow-md rounded-md p-5 my-10 border-blue-300 border-2">
+          <SearchTrasaction />
+          <div className="flex w-full gap-5 my-5 items-center">
+            <p className="w-[70px] text-[12px]">Stored By</p>
+            <div className="flex w-full xl:w-[400px] gap-3">
+              {selector?.map((item, index) => (
+                <Select key={index} name={item?.name} />
+              ))}
+            </div>
+          </div>
+          <div className="my-10 ">
+            <TransactionTable body={body} />
+          </div>
         </div>
       </div>
     </div>

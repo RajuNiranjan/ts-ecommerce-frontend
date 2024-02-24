@@ -22,7 +22,7 @@ const Productsearch = () => {
 
   return (
     <div className="flex w-full flex-col sm:flex-row sm:w-full md:w-[600px] lg:w-[800px] gap-2 md:gap-5 xl:w-[993px] items-center justify-between my-14">
-      <div className="w-[350px] sm:w-[300px] lg:w-[400px] xl:w-[600px] border  border-blue-400 sm:h-10 rounded-full flex items-center px-3">
+      <div className="w-full sm:w-[300px] lg:w-[400px] xl:w-[600px] border  border-blue-400 sm:h-10 rounded-full flex items-center px-3">
         <CiSearch className="text-slate-500 text-[14px] h-7 sm:text-xl" />
         <input
           onChange={handleSearchInputChange}
@@ -31,7 +31,7 @@ const Productsearch = () => {
           className="flex-1 h-full px-1 text-[12px] sm:text-[14px] bg-transparent focus:outline-none"
         />
       </div>
-      <div className="flex gap-5 mt-1 sm:mt-0">
+      <div className="flex w-full gap-5 mt-1 sm:mt-0">
         <div>
           <button
             disabled={!isAddProductEnabled}

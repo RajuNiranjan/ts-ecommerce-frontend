@@ -65,23 +65,23 @@ export default function Tables() {
         <TableBody>
           {body.map((item, index) => (
             <TableRow key={index}>
-              <TableCell className="md:text-[12px] text-[10px] sm:text-[12px] lg:text-[14px] fkex  justify-center items-center">
-                <InsertPhotoOutlinedIcon className="bg-[#B3B3B3] text-[12px] sm:md:text-[16px] md:text-[16px] lg:text-[24px]" />{" "}
+              <TableCell className="md:text-[12px] text-[12px] sm:text-[12px] lg:text-[14px] flex gap-2  justify-center items-center">
+                <InsertPhotoOutlinedIcon className="bg-[#B3B3B3] text-[24px] sm:md:text-[16px] md:text-[16px] lg:text-[24px]" />{" "}
                 {item?.productName}
               </TableCell>
-              <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px]">
+              <TableCell className="md:text-[12px] text-[12px] sm:text-[12px]  lg:text-[14px]">
                 {item?.category}
               </TableCell>
-              <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px]">
+              <TableCell className="md:text-[12px] text-[12px] sm:text-[12px]  lg:text-[14px]">
                 $ {item?.price}
               </TableCell>
-              <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px]">
+              <TableCell className="md:text-[12px] text-[12px] sm:text-[12px]  lg:text-[14px]">
                 {item?.sold}
               </TableCell>
-              <TableCell className="md:text-[12px] text-[10px] sm:text-[12px]  lg:text-[14px]">
+              <TableCell className="md:text-[12px] text-[12px] sm:text-[12px]  lg:text-[14px]">
                 $ {item?.revenue}
               </TableCell>
-              <TableCell className="md:text-[12px] text-[10px]  lg:text-[14px]">
+              <TableCell className="md:text-[12px] text-[12px]  lg:text-[14px]">
                 <MoreVertIcon className="text-[#B3B3B3]" />
               </TableCell>
             </TableRow>
