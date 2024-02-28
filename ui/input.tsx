@@ -28,11 +28,14 @@ const Input: React.FC<ChildProps> = ({
     width: width || "auto",
   };
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1 w-full">
       <label className="capitalize font-normal text-[16px]">{labelName}</label>
       <div
         className="border border-blue-300 flex items-center p-2 rounded-md w-full"
-        style={inputStyle}>
+        style={{
+          ...inputStyle,
+          width: "w-full xl:w-332",
+        }}>
         <input
           onChange={onChange}
           type={type}

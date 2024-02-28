@@ -1,115 +1,112 @@
-"use client";
-import React, { useState } from "react";
-import Bell from "@/asserts/bell.png";
-import Light from "@/asserts/Vector.png";
-import User from "@/asserts/user.png";
-import DownArrow from "@/asserts/downArrow.png";
-import Image from "next/image";
-import MenuIcon from "@mui/icons-material/Menu";
+import React from "react";
+import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import Image from "next/image";
+import Personicon from "@/components/assets/oldman.png";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import {
+  disableEditProfileComponentShow,
+  enableEditProfileComponentShow,
+} from "@/redux/EditProfileComponentShow";
+import { useRouter } from "next/router";
+import MenuIcon from "@mui/icons-material/Menu";
+import {
+  enableExpandedSidebarShow,
+  disableExpandedSidebarShow,
+} from "@/redux/ExpandedSidebarShow";
 import CloseIcon from "@mui/icons-material/Close";
-import { IoIosArrowUp } from "react-icons/io";
-import { IoIosArrowDown } from "react-icons/io";
-import PopupMenu from "./popup_menu";
 
-const NavBar = () => {
-  const [showNavMenu, setShowNavMenu] = useState(false);
-  const handleShowNavMenu = () => {
-    setShowNavMenu(!showNavMenu);
-  };
+const Navbar = () => {
+  const { editProfileCompanentShowState } = useSelector(
+    (state: RootState) => state.EditProfileComponentShow
+  );
+  const dispatch = useDispatch();
+
+  const router = useRouter();
+  // const User = sessionStorage.getItem("User");
+  // if (!User) {
+  //   router.push("/login");
+  // }
+
+  const { expandedSidebarShow } = useSelector(
+    (state: RootState) => state.ExpandedSidebarShow
+  );
+
   return (
-    <nav className="py-4 sm:h-[80px] bg-white flex justify-between items-center shadow-lg px-5 sm:px-14 sticky top-0 z-30">
-      <div>
-        <h1 className="sm:text-[40px]">Logs</h1>
+    <div className="w-full px-[20px] py-[10px] bg-white flex items-center justify-between drop-shadow h-[70px] fixed top-0 left-0 z-10">
+      <p className="hidden 700px:block text-[40px] leading-[49px] cursor-pointer">
+        Logs
+      </p>
+      <div
+        className="flex 700px:hidden h-[40px] w-[40px] rounded-full bg-[#81b4f8] items-center justify-center text-white cursor-pointer"
+        onClick={() => {
+          expandedSidebarShow
+            ? dispatch(disableExpandedSidebarShow())
+            : dispatch(enableExpandedSidebarShow());
+        }}>
+        {expandedSidebarShow ? <CloseIcon /> : <MenuIcon />}
       </div>
-      <div className="hidden sm:flex items-center gap-5">
-        <div className="flex items-center gap-4">
-          <div className="relative">
-            <Image
-              src={Bell}
-              alt="bell"
-              width={10}
-              height={10}
-              className="w-5"
-            />
-            <span className="absolute bg-red-500 h-5 w-5 rounded-full flex justify-center items-center text-sm -top-3 text-white left-3">
-              6
-            </span>
-          </div>
-          <div>
-            <Image
-              src={Light}
-              alt="light"
-              width={10}
-              height={10}
-              className="w-5"
-            />
+
+      <div className="w-[50vw] 1000px:w-[588px] h-[48px] bg-[#F4F5F9] rounded-full box-border overflow-hidden flex items-center justify-between gap-[10px] px-[24px] py-[10px]">
+        <input
+          type="text"
+          className="w-full h-full outline-none border-none bg-transparent"
+          placeholder="Search items, Products"
+        />
+
+        <div className="text-gray-400 cursor-pointer">
+          <SearchIcon />
+        </div>
+      </div>
+
+      <div className="flex items-center gap-[16px]">
+        <div className="text-gray-400 relative cursor-pointer">
+          <p className="w-[16px] h-[16px] text-[10px] bg-[#ff3b30] text-white flex items-center justify-center rounded-full absolute right-[-6px] top-[-6px]">
+            7
+          </p>
+          <NotificationsIcon />
+        </div>
+
+        <div className="text-gray-400 cursor-pointer">
+          <LightModeIcon />
+        </div>
+
+        <div className="w-[40px] h-[40px] rounded-full border-[2px] border-[#196FE1] border-opacity-20 cursor-pointer relative">
+          <Image
+            src={Personicon}
+            alt="Person icon"
+            width={38}
+            height={38}
+            className="w-full h-full object-cover rounded-full"
+          />
+          <div className="w-[14px] h-[14px] bg-white rounded-full flex items-center justify-center absolute bottom-[-2px] right-[-2px]">
+            <div className="bg-[#30d158] w-[10px] h-[10px] rounded-full" />
           </div>
         </div>
-        <div className="relative">
+
+        <div
+          className="hidden 1000px:flex items-center gap-[10px] cursor-pointer"
+          onClick={() => {
+            dispatch(
+              editProfileCompanentShowState
+                ? disableEditProfileComponentShow()
+                : enableEditProfileComponentShow()
+            );
+          }}>
+          <p className="text-[14px] font-[500]">Admin</p>
           <div
-            onClick={handleShowNavMenu}
-            className="flex cursor-pointer  justify-center items-center gap-4 font-medium text-lg">
-            <div className="relative">
-              <Image
-                src={User}
-                alt="user"
-                width={50}
-                height={50}
-                className="rounded-full w-10 h-10 object-container"
-              />
-              <span className="absolute w-3 h-3 bg-green-500 rounded-full border-white right-0 bottom-0 border-2 " />
-            </div>
-            <div className="flex gap-2 items-center ">
-              <h1>Admin</h1>
-              {showNavMenu ? <IoIosArrowUp /> : <IoIosArrowDown />}
-            </div>
-          </div>
-          <div
-            className={`absolute -top-4 -left-2  translate-x-[200px]  transition-all duration-1000`}>
-            {showNavMenu ? <PopupMenu /> : ""}
+            className={`${
+              editProfileCompanentShowState ? "rotate-180" : "rotate-0"
+            } transition-all duration-500`}>
+            <KeyboardArrowDownIcon />
           </div>
         </div>
       </div>
-      <div className="relative sm:hidden ">
-        <div onClick={handleShowNavMenu}>
-          {!showNavMenu ? <MenuIcon /> : <CloseIcon />}
-        </div>
-        {showNavMenu ? (
-          <div className="bg-white border w-max h-max right-0 top-[45px] shadow-xl rounded-md absolute transform duration-1000">
-            <ul className="">
-              <li className="flex items-center p-2 gap-1 hover:bg-slate-200">
-                <NotificationsIcon className="text-lg" />
-                <span className="text-sm">Notifications</span>
-              </li>
-              <li className="flex items-center p-2 gap-1 hover:bg-slate-200">
-                <LightModeIcon className="text-lg" />
-                <span className="text-sm">Dark Mode</span>
-              </li>
-              <li className="flex items-center p-2 gap-1 hover:bg-slate-200">
-                <div className="relative">
-                  <Image
-                    src={User}
-                    alt="user"
-                    width={50}
-                    height={50}
-                    className="rounded-full w-5 h-5 object-container"
-                  />
-                </div>
-                <span className="text-sm flex items-center justify-center">
-                  Admin <KeyboardArrowRightIcon className="text-lg" />
-                </span>
-              </li>
-            </ul>
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
-    </nav>
+    </div>
   );
 };
 
-export default NavBar;
+export default Navbar;

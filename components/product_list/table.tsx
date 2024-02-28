@@ -7,6 +7,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
+import Select from "@/ui/select";
+import PaginationRounded from "@/ui/pagination";
 
 interface Product {
   productName: string;
@@ -15,6 +17,16 @@ interface Product {
   sold: number;
   revenue: number;
 }
+
+interface Select {
+  name: string;
+}
+
+const bottom: Select[] = [
+  {
+    name: "sheer:01",
+  },
+];
 
 const body: Product[] = [
   {
@@ -88,6 +100,16 @@ export default function Tables() {
           ))}
         </TableBody>
       </Table>
+      <div className="flex  justify-between gap-x-10 w-full  sm:flex-row px-5 py-10">
+        <div>
+          {bottom?.map((item, index) => (
+            <Select key={index} name={item?.name} />
+          ))}
+        </div>
+        <div className="w-[100px] h-5">
+          <PaginationRounded />
+        </div>
+      </div>
     </TableContainer>
   );
 }

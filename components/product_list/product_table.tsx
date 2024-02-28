@@ -37,14 +37,14 @@ const ProductTable = () => {
         ))}
       </div>
       <Tables />
-      <div className="flex flex-col gap-5 sm:flex-row justify-between px-5 py-10">
+      {/* <div className="flex flex-col gap-5 sm:flex-row justify-between px-5 py-10">
         <div>
           {bottom?.map((item, index) => (
             <Select key={index} name={item?.name} />
           ))}
         </div>
         <PaginationRounded />
-      </div>
+      </div> */}
     </div>
   );
 };

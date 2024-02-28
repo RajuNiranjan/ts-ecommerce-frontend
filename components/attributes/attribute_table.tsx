@@ -1,59 +1,83 @@
 import PaginationRounded from "@/ui/pagination";
-import Select from "@/ui/select";
-import Tables from "@/components/attributes/table";
+import SelectComponent from "@/ui/selectComponent";
 import React from "react";
 
-interface Select {
-  name: string;
+interface TableHeadDataProps {
+  headers: string[];
+}
+interface SizeOption {
+  value: string;
 }
 
-const bottom: Select[] = [
-  {
-    name: "sheer:01",
-  },
-];
-
-interface Attribute {
-  name: string;
-  description: string;
-  value: string[];
-  action: JSX.Element;
+interface TableBodyDataProps {
+  data: {
+    name: string;
+    description: string;
+    value: SizeOption[];
+    action: JSX.Element;
+  }[];
 }
 
-const body: Attribute[] = [
-  {
-    name: "Size",
-    description: "Different size for clothes",
-    value: ["S", "M", "XL", "XXL"],
-    action: (
-      <p className="font-bold bg-blue-500 text-semibold w-max text-white px-3 py-1 rounded-xl cursor-pointer">
-        View Details
-      </p>
-    ),
-  },
-  {
-    name: "Color",
-    description: "childer, Watches",
-    value: ["Red", "Blue", "Green", "Black", "Yellow"],
-    action: (
-      <p className="font-bold bg-blue-500 w-max text-white px-3 py-1 rounded-xl text-semibold cursor-pointer">
-        View Details
-      </p>
-    ),
-  },
-];
-
-const AttributeTable = () => {
+const AttributeTable: React.FC<TableHeadDataProps & TableBodyDataProps> = ({
+  headers,
+  data,
+}) => {
   return (
     <div>
-      <Tables body={body} />
-      <div className="flex flex-col gap-5 sm:flex-row justify-between px-5 py-10">
-        <div>
-          {bottom?.map((item, index) => (
-            <Select key={index} name={item?.name} />
+      <div
+        className="w-full  flex flex-col gap-[48px] overflow-auto"
+        style={{ scrollbarWidth: "none" }}>
+        <div className="w-full flex items-center justify-between text-[16px] font-[500] gap-[10px]">
+          {headers?.map((item, index) => (
+            <div
+              key={index}
+              className="min-w-[180px] max-w-[180px] h-[40px] flex items-center">
+              <h1 className="font-bold">{item}</h1>
+            </div>
           ))}
         </div>
-        <PaginationRounded />
+
+        <div className="w-full flex flex-col gap-[40px]">
+          <div className="w-full flex flex-col gap-[16px]">
+            {data?.map((item, index) => (
+              <div
+                key={index}
+                className="w-full flex items-center justify-between text-[14px] gap-[10px]">
+                <div className="min-w-[180px] max-w-[180px] h-[40px] flex items-center">
+                  {item?.name}
+                </div>
+
+                <div className="min-w-[180px] max-w-[180px] h-[40px] flex items-center">
+                  {item?.description}
+                </div>
+
+                <div className="min-w-[180px] max-w-[180px] h-[40px] flex items-cente">
+                  <ul className="flex gap-2">
+                    {item?.value?.map((item, index) => (
+                      <li
+                        key={index}
+                        className="list-none flex justify-center items-center col-span-1 bg-gray-300  px-3 h-max rounded-sm text-white w-max">
+                        {item?.value}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="min-w-[180px] max-w-[180px] h-[40px] flex items-center text-[16px] ">
+                  {item?.action}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="w-full my-5 flex items-center justify-between gap-40">
+          <div>
+            <SelectComponent />
+          </div>
+          <div>
+            <PaginationRounded />
+          </div>
+        </div>
       </div>
     </div>
   );

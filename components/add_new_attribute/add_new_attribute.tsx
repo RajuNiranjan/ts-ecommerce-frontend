@@ -77,10 +77,10 @@ const AddNewAttribute: React.FC<AddNewAttributeProps> = ({
   return (
     <div>
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-semibold">Add New Attributes</h1>
+        <h1 className="xl:text-3xl font-semibold">Add New Attributes</h1>
         <div className="">
           <RxCross1
-            className="font-bold cursor-pointer text-xl"
+            className="font-bold cursor-pointer xl:text-xl"
             onClick={handleOpenAddAttribute}
           />
         </div>
