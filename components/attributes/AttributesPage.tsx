@@ -85,19 +85,18 @@ const AttributesPage = () => {
           <div className="w-full bg-white rounded-md shadow-md p-5 my-10 overflow-auto">
             <SearchAttribute />
             <AttributeTable headers={TableHeadData} data={TableBodyData} />
-            
           </div>
-          <div className="absolute -top-10 flex justify-center items-center w-full  ">
-            {showAddAttribute ? (
-              <div className="w-full xl:w-[1000px] xl:h-[500px] rounded-md shadow-xl bg-white p-10  mt-10">
+          {/* <div className="absolute -top-10 flex justify-center items-center w-full  "> */}
+          {showAddAttribute && (
+            <div className=" w-full h-full p-2 fixed inset-0 backdrop-blur-sm bg-black bg-opacity-50  top-0 z-10 flex justify-center items-center">
+              <div className="bg-white p-5 w-full xl:w-[1000px]  rounded-md shadow-xl border ">
                 <AddNewAttribute
                   handleOpenAddAttribute={handleOpenAddAttribute}
                 />
               </div>
-            ) : (
-              ""
-            )}
-          </div>
+            </div>
+          )}
+          {/* </div> */}
         </div>
       </div>
     </div>
@@ -105,3 +104,18 @@ const AttributesPage = () => {
 };
 
 export default AttributesPage;
+
+{
+  /* <div className=" w-full h-full p-2 fixed inset-0 bg-black bg-opacity-50  top-0 z-10 flex justify-center items-center">
+  <div className="bg-white p-5 w-full xl:w-[1000px]  rounded-md shadow-xl border ">
+    <AddNewTax handleAddNewTax={handleAddNewTax} />
+  </div>
+</div>;
+
+
+<div className="w-full xl:w-[1000px] xl:h-[500px] rounded-md shadow-xl bg-white p-10  mt-10">
+                <AddNewAttribute
+                  handleOpenAddAttribute={handleOpenAddAttribute}
+                />
+              </div> */
+}

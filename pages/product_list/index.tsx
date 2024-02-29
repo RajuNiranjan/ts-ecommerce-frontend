@@ -2,8 +2,8 @@ import React from "react";
 import dynamic from "next/dynamic";
 
 const ProductListPage = dynamic(
-  () => import("@/components/transactions_details/TransactionDetailsPage"),
-  { 
+  () => import("@/components/product_list/ProductListPage"),
+  {
     ssr: false,
     loading: () => (
       <div className="w-full">
@@ -14,8 +14,8 @@ const ProductListPage = dynamic(
           </div>
         </div>
       </div>
-    )
-   }
+    ),
+  }
 );
 
 const ProductList = () => {
@@ -25,3 +25,5 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
+// @/components/transactions_details/TransactionDetailsPage

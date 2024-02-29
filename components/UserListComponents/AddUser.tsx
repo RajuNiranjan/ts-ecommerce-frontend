@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { disableAddUserComponentShow } from '@/redux/AddUserComponentShow';
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import { RootState } from '@/redux/store';
 
 const AddUser = () => {
 
@@ -73,14 +74,13 @@ const AddUser = () => {
 
   const dispatch = useDispatch()
 
-  const subscribeComArray = [
-    'Subscribe',
-    'Unsubscribe'
-  ]
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
 
   return (
     <div
-    className='bg-white h-[96vh] rounded-[16px] p-[32px] drop-shadow-sm text-black flex flex-col gap-[30px] relative overflow-auto 500px:w-fit'
+    className={`h-[96vh] rounded-[16px] p-[32px] drop-shadow-sm ${isDarkModeEnableState ? 'bg-black text-white' : 'bg-white text-black'} flex flex-col gap-[30px] relative overflow-auto 500px:w-fit`}
     style={{
       scrollbarWidth: 'none'
     }}>
@@ -107,7 +107,7 @@ const AddUser = () => {
             </p>
             <div
             className='w-[90%] 500px:w-[388px] cursor-pointer px-[10px] rounded-[4px] border border-[#71a7ef] relative text-[16px]'>
-              <select name="" id="" className='w-full py-[10px] outline-none border-none'>
+              <select name="" id="" className='w-full py-[10px] outline-none border-none bg-transparent'>
                 <option value="">Subscribed</option>
                 <option value="">Unsubscribed</option>
               </select>

@@ -5,6 +5,8 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 export default function Home() {
   const [visibilityOn, setVisibilityOn] = useState(false);
@@ -81,6 +83,10 @@ export default function Home() {
     setLoading(false);
   }
 
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
+
   return (
     <div className="w-full h-fit 900px:h-screen flex items-center justify-center relative flex-col 900px:flex-row gap-[20px] 900px:gap-0">
       <div className="w-full 900px:w-1/2 h-[40vh] 900px:h-full">
@@ -92,7 +98,7 @@ export default function Home() {
         />
       </div>
 
-      <div className="w-full 900px:w-1/2 h-full flex items-center justify-center bg-transparent">
+      <div className={`w-full 900px:w-1/2 h-full flex items-center justify-center ${isDarkModeEnableState ? 'bg-black text-white' : 'bg-white'}`}>
         <div className="w-fit h-fit bg-transparent p-[20px] 900px:p-0 rounded-[20px]">
           <p className="text-[26px] md:text-[40px] leading-[34px] md:leading-[48px]">
             Welcome Back <br />
@@ -102,7 +108,7 @@ export default function Home() {
 
           <div className="w-full px-[20px] box-border mt-[30px] flex flex-col gap-[20px]">
             <div className="flex flex-col gap-[10px]">
-              <p className="text-[16px] leading-[20.8px] text-[#2B2B2B]">
+              <p className={`text-[16px] leading-[20.8px] ${isDarkModeEnableState ? 'text-white' : 'text-[#2B2B2B]'}`}>
                 Email ID / Username
               </p>
 
@@ -125,7 +131,7 @@ export default function Home() {
 
             <div>
               <div className="flex flex-col gap-[10px]">
-                <p className="text-[16px] leading-[20.8px] text-[#2B2B2B]">
+                <p className={`text-[16px] leading-[20.8px] ${isDarkModeEnableState ? 'text-white' : 'text-[#2B2B2B]'}`}>
                   Password
                 </p>
 

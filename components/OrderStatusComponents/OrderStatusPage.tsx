@@ -11,8 +11,11 @@ const OrderStatusPage = () => {
   const { expandedSidebarShow } = useSelector(
     (state: RootState) => state.ExpandedSidebarShow
   );
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
   return (
-    <div className="w-full min-h-screen bg-[#ebeef0]">
+    <div className={`w-full min-h-screen transition-all duration-500 ${isDarkModeEnableState ? 'bg-[#333333]' : 'bg-[#ebeef0]'}`}>
       <Navbar />
       <EditProfileComponent />
       <Sidebar />

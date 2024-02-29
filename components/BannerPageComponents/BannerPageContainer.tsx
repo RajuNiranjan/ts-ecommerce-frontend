@@ -15,12 +15,16 @@ const BannerPageContainer = () => {
 
   const dispatch = useDispatch()
 
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
+
   return (
     <div
     className='w-full flex flex-col gap-[30px]'>
 
         <p
-        className='text-[36px] font-bold'>
+        className={`text-[36px] font-bold ${isDarkModeEnableState && 'text-white'}`}>
             Banners
         </p>
 

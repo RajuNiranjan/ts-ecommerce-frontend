@@ -4,11 +4,15 @@ import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import PencilIcon from "./icons/Pencil.png";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const AllBaners = () => {
-
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
   return (
-    <div className="w-full flex flex-col gap-[48px] px-[16px] py-[16px] bg-white border border-[#81b4f8] rounded-[16px] drop-shadow-md overflow-auto" style={{scrollbarWidth: 'none'}}>
+    <div className={`w-full flex flex-col gap-[48px] px-[16px] py-[16px] ${isDarkModeEnableState ? 'bg-black text-white' : 'bg-white'} border border-[#81b4f8] rounded-[16px] drop-shadow-md overflow-auto`} style={{scrollbarWidth: 'none'}}>
       <div className="w-full flex items-center justify-between text-[16px] font-bold gap-[10px]">
         <p className="px-[8px] py-[8px] min-w-[120px] max-w-[120px]">Title</p>
 

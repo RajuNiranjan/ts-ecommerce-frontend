@@ -10,12 +10,15 @@ const UserListContainer = () => {
     const { addUserComponentShowState } = useSelector(
         (state: RootState) => state.AddUserComponentShow
       );
+      const { isDarkModeEnableState } = useSelector(
+        (state: RootState) => state.IsDarkModeEnable
+      );
   return (
     <div
     className='w-full flex flex-col gap-[30px]'>
 
         <p
-        className='text-[36px] font-[600]'>
+        className={`text-[36px] font-[600] ${isDarkModeEnableState && 'text-white'}`}>
             User lists
         </p>
 

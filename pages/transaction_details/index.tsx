@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 const TransactionDetailsPage = dynamic(
   () => import("@/components/transactions_details/TransactionDetailsPage"),
-  { 
+  {
     ssr: false,
     loading: () => (
       <div className="w-full">
@@ -14,14 +14,12 @@ const TransactionDetailsPage = dynamic(
           </div>
         </div>
       </div>
-    )
-   }
+    ),
+  }
 );
 
 const TransactionsDetails = () => {
-  return (
-    <TransactionDetailsPage />
-  );
+  return <TransactionDetailsPage />;
 };
 
 export default TransactionsDetails;

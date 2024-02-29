@@ -1,6 +1,8 @@
 import React from "react";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const AllUserLists = () => {
   const userListArray = [
@@ -42,14 +44,18 @@ const AllUserLists = () => {
     },
   ];
 
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
+
   return (
-    <div className="w-full p-[32px] flex flex-col gap-[16px] bg-white drop-shadow-md rounded-[16px]">
+    <div className={`w-full p-[32px] flex flex-col gap-[16px] ${isDarkModeEnableState ? 'bg-black text-white' : 'bg-white'} drop-shadow-md rounded-[16px]`}>
       <div className="flex items-center gap-[30px] flex-wrap">
         <div className="min-w-[210px] max-w-[210px] px-[10px] rounded-[4px] border border-[#71a7ef] cursor-pointer relative text-[14px]">
           <select
             name=""
             id=""
-            className="w-full py-[10px] outline-none border-none"
+            className="w-full py-[10px] outline-none border-none bg-transparent"
           >
             <option value="">All</option>
             <option value="">lorem</option>
@@ -60,7 +66,7 @@ const AllUserLists = () => {
           <select
             name=""
             id=""
-            className="w-full py-[10px] outline-none border-none"
+            className="w-full py-[10px] outline-none border-none bg-transparent"
           >
             <option value="">New users</option>
             <option value="">lorem</option>
@@ -71,7 +77,7 @@ const AllUserLists = () => {
           <select
             name=""
             id=""
-            className="w-full py-[10px] outline-none border-none"
+            className="w-full py-[10px] outline-none border-none bg-transparent"
           >
             <option value="">Active users</option>
             <option value="">lorem</option>
@@ -82,7 +88,7 @@ const AllUserLists = () => {
           <select
             name=""
             id=""
-            className="w-full py-[10px] outline-none border-none"
+            className="w-full py-[10px] outline-none border-none bg-transparent"
           >
             <option value="">Months</option>
             <option value="">lorem</option>
@@ -140,7 +146,7 @@ const AllUserLists = () => {
               <select
                 name=""
                 id=""
-                className="w-full py-[10px] outline-none border-none"
+                className="w-full py-[10px] outline-none border-none bg-transparent"
               >
                 <option value="">Sheet 01</option>
                 <option value="">Sheet 02</option>

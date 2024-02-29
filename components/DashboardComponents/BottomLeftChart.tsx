@@ -63,7 +63,7 @@ const BottomLeftChart = () => {
       },
     },
     legend: {
-      show: true,
+      show: false,
       showForSingleSeries: true,
       customLegendItems: ["Male", "Female", "Transgender"],
       markers: {
@@ -72,8 +72,12 @@ const BottomLeftChart = () => {
     },
   };
 
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
+
   return (
-    <div className="w-full h-full bg-white drop-shadow-md rounded-[8px] px-[20px] box-border py-[20px]">
+    <div className={`w-full h-full ${isDarkModeEnableState ? 'bg-black text-white' : 'bg-white'} drop-shadow-md rounded-[8px] px-[20px] box-border py-[20px]`}>
       <div className="w-full flex items-center justify-between mb-[20px]">
         <div className="flex gap-[20px] items-center">
           <Image

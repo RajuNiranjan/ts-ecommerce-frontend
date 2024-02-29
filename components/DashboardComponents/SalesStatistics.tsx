@@ -1,8 +1,14 @@
+import { RootState } from "@/redux/store";
 import { ApexOptions } from "apexcharts";
 import React from "react";
 import Chart from "react-apexcharts";
+import { useSelector } from "react-redux";
 
 const SalesStatistics = () => {
+
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
     
   const series = [
     {
@@ -45,7 +51,7 @@ const SalesStatistics = () => {
     },
     markers: {
       size: 0, // Set the size of the hover dot
-      colors: "#fff", // Set the color of the hover dot
+      colors: isDarkModeEnableState ? "white" : "#fff", // Set the color of the hover dot
       strokeColors: "#008FFB", // Set the border color of the hover dot
       strokeWidth: 4, // Set the border width of the hover dot
       hover: {
@@ -65,7 +71,7 @@ const SalesStatistics = () => {
   };
 
   return (
-    <div className="w-full h-[550px] bg-white drop-shadow-md rounded-[8px] px-[20px] box-border py-[20px]">
+    <div className={`w-full h-[550px] ${isDarkModeEnableState ? 'bg-black text-white' : 'bg-white'} drop-shadow-md rounded-[8px] px-[20px] box-border py-[20px]`}>
       <Chart
         series={series}
         type="area"

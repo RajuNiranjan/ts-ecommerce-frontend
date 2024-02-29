@@ -1,15 +1,19 @@
 import React from "react";
 import CloseIcon from '@mui/icons-material/Close';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { disableAddBannerComponentShow } from "@/redux/AddBannerComponentShow";
+import { RootState } from "@/redux/store";
 
 const AddBanner = () => {
 
     const dispatch = useDispatch()
+    const { isDarkModeEnableState } = useSelector(
+      (state: RootState) => state.IsDarkModeEnable
+    );
 
   return (
     <div
-      className="rounded-[16px] bg-white px-[20px] py-[20px] drop-shadow-md flex flex-col gap-[32px] text-black relative"
+      className={`rounded-[16px] ${isDarkModeEnableState ? 'bg-black text-white' : 'bg-white text-black'} px-[20px] py-[20px] drop-shadow-md flex flex-col gap-[32px] relative`}
     >
         <div
         className="absolute top-[12px] right-[12px] cursor-pointer"

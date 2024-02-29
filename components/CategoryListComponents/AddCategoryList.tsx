@@ -1,16 +1,20 @@
 import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { disableAddCategoryListShow } from "@/redux/AddCategoryListShow";
 import Image from "next/image";
 import ThumbnailIcon from "./icons/thumbnailIcon.png";
+import { RootState } from "@/redux/store";
 
 const AddCategoryList = () => {
   const dispatch = useDispatch();
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
   return (
-    <div className="bg-[#ebeef0] rounded-[24px] px-[20px] py-[20px] relative">
+    <div className={`${isDarkModeEnableState ? 'bg-black text-white' : 'bg-[#ebeef0] text-black'} rounded-[24px] px-[20px] py-[20px] relative`}>
       <div
-        className="absolute right-[10px] top-[10px] text-black cursor-pointer"
+        className="absolute right-[10px] top-[10px] cursor-pointer"
         onClick={() => {
           dispatch(disableAddCategoryListShow());
         }}
@@ -18,10 +22,10 @@ const AddCategoryList = () => {
         <CloseIcon />
       </div>
 
-      <p className="text-[24px] font-[600] text-black">Add New Category</p>
+      <p className="text-[24px] font-[600]">Add New Category</p>
 
       <div className="w-[340px] 500px:w-[460px] 900px:w-[790px] flex flex-col gap-[48px] mt-[30px]">
-        <div className="flex flex-col gap-[16px] text-black">
+        <div className="flex flex-col gap-[16px]">
           <div className="w-full flex gap-[20px] 900px:gap-[100px] flex-col 900px:flex-row">
             <div className="flex flex-col gap-[8px] w-full 900px:w-1/2">
               <p className="text-[16px]">Category name</p>

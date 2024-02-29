@@ -8,6 +8,7 @@ import AddCategoryListShow from "./AddCategoryListShow";
 import AddUserComponentShow from "./AddUserComponentShow";
 import AddCouponComponentShow from "./AddCouponComponentShow";
 import EditCouponComponentShow from "./EditCouponComponentShow";
+import IsDarkModeEnable from "./IsDarkModeEnable";
 
 export const store = configureStore({
     reducer: {
@@ -17,7 +18,8 @@ export const store = configureStore({
         AddCategoryListShow: AddCategoryListShow,
         AddUserComponentShow: AddUserComponentShow,
         AddCouponComponentShow: AddCouponComponentShow,
-        EditCouponComponentShow: EditCouponComponentShow
+        EditCouponComponentShow: EditCouponComponentShow,
+        IsDarkModeEnable: IsDarkModeEnable
     },
 });
 

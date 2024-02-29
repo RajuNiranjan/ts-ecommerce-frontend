@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 const TransactionHistoryPage = dynamic(
   () => import("@/components/transactions_history/TransactionHistoryPage"),
-  { 
+  {
     ssr: false,
     loading: () => (
       <div className="w-full">
@@ -14,8 +14,8 @@ const TransactionHistoryPage = dynamic(
           </div>
         </div>
       </div>
-    )
-   }
+    ),
+  }
 );
 
 const Transactions = () => {

@@ -2,6 +2,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import tempImage from "./icons/material-symbols_image.png";
 import Star from "../Star/Star";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const StatusDetails = () => {
   const [activeState, setActiveState] = useState(3);
@@ -32,8 +34,12 @@ const StatusDetails = () => {
     },
   ];
 
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
+
   return (
-    <div className="w-full bg-white drop-shadow-md p-[32px] rounded-[24px] flex flex-col gap-[40px] mt-[30px]">
+    <div className={`w-full ${isDarkModeEnableState ? 'bg-black text-white' : 'bg-white'} drop-shadow-md p-[32px] rounded-[24px] flex flex-col gap-[40px] mt-[30px]`}>
       <p className="text-[24px] font-[600]">Order status</p>
 
       <div className="w-full flex flex-col gap-[40px]">
@@ -95,7 +101,7 @@ const StatusDetails = () => {
               return (
                 <div
                   key={index}
-                  className="w-full 900px:w-1/2 px-[24px] py-[16px] border border-[#000000] border-opacity-20 rounded-[8px] bg-[#f8f7f7] flex flex-col gap-[20px]"
+                  className={`w-full 900px:w-1/2 px-[24px] py-[16px] border border-[#000000] border-opacity-20 rounded-[8px] ${isDarkModeEnableState ? 'bg-[#333333]' : 'bg-[#f8f7f7]'} flex flex-col gap-[20px]`}
                 >
                   <p className="text-[18px] font-[600]">{details.heading}</p>
                   <div className="flex flex-col gap-[10px]">
@@ -121,7 +127,7 @@ const StatusDetails = () => {
               </div>
             );
           })}
-          <div className={`w-[8px] 1200px:w-full bg-black h-full 1200px:h-[8px] absolute top-1/2 -translate-y-1/2 before:absolute`} />
+          <div className={`w-[8px] 1200px:w-full ${isDarkModeEnableState ? 'bg-[#333333]' : 'bg-black'} h-full 1200px:h-[8px] absolute top-1/2 -translate-y-1/2 before:absolute`} />
         </div>
       </div>
     </div>

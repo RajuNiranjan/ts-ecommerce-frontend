@@ -10,13 +10,16 @@ const CategoryLists = () => {
   const { addCategoryListShowState } = useSelector(
     (state: RootState) => state.AddCategoryListShow
   );
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
 
   const dispatch = useDispatch()
 
   return (
     <div className="w-full">
       <div className="w-full flex items-center justify-between gap-[20px] flex-wrap">
-        <p className="text-[36px] font-[600]">Category List</p>
+        <p className={`text-[36px] font-[600] ${isDarkModeEnableState && 'text-white'}`}>Category List</p>
 
         <button
           name="Add new category button"

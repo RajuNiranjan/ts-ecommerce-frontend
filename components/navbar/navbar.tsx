@@ -18,25 +18,29 @@ import {
   disableExpandedSidebarShow,
 } from "@/redux/ExpandedSidebarShow";
 import CloseIcon from "@mui/icons-material/Close";
+import { disableDarkMode, enableDarkMode } from "@/redux/IsDarkModeEnable";
 
 const Navbar = () => {
   const { editProfileCompanentShowState } = useSelector(
     (state: RootState) => state.EditProfileComponentShow
   );
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
   const dispatch = useDispatch();
 
   const router = useRouter();
-  // const User = sessionStorage.getItem("User");
-  // if (!User) {
-  //   router.push("/login");
-  // }
+  const User = sessionStorage.getItem("User");
+  if (!User) {
+    router.push("/login");
+  }
 
   const { expandedSidebarShow } = useSelector(
     (state: RootState) => state.ExpandedSidebarShow
   );
 
   return (
-    <div className="w-full px-[20px] py-[10px] bg-white flex items-center justify-between drop-shadow h-[70px] fixed top-0 left-0 z-10">
+    <div className={`w-full px-[20px] py-[10px] transition-all duration-500 ${isDarkModeEnableState ? 'bg-black text-white' : 'bg-white'} flex items-center justify-between drop-shadow h-[70px] fixed top-0 left-0 z-10`}>
       <p className="hidden 700px:block text-[40px] leading-[49px] cursor-pointer">
         Logs
       </p>
@@ -63,14 +67,16 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-[16px]">
-        <div className="text-gray-400 relative cursor-pointer">
+        <div className={`transition-all duration-500 ${isDarkModeEnableState ? 'text-white':'text-gray-400'} relative cursor-pointer`}>
           <p className="w-[16px] h-[16px] text-[10px] bg-[#ff3b30] text-white flex items-center justify-center rounded-full absolute right-[-6px] top-[-6px]">
             7
           </p>
           <NotificationsIcon />
         </div>
 
-        <div className="text-gray-400 cursor-pointer">
+        <div className={`transition-all duration-500 ${isDarkModeEnableState ? 'text-white':'text-gray-400'} cursor-pointer`} onClick={()=>{
+          isDarkModeEnableState ? dispatch(disableDarkMode()) : dispatch(enableDarkMode())
+        }}>
           <LightModeIcon />
         </div>
 

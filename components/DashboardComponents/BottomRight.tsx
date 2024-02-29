@@ -7,9 +7,12 @@ const BottomRight = () => {
     const { expandedSidebarShow } = useSelector(
         (state: RootState) => state.ExpandedSidebarShow
       );
+      const { isDarkModeEnableState } = useSelector(
+        (state: RootState) => state.IsDarkModeEnable
+      );
   return (
     <div
-    className={`${expandedSidebarShow ? 'w-full' : 'w-full 1300px:w-[500px]'} bg-white drop-shadow-md rounded-[16px] h-full px-[16px] py-[16px] flex flex-col gap-[16px]`}>
+    className={`${expandedSidebarShow ? 'w-full' : 'w-full 1300px:w-[500px]'} ${isDarkModeEnableState ? 'bg-black text-white' : 'bg-white'} drop-shadow-md rounded-[16px] h-full px-[16px] py-[16px] flex flex-col gap-[16px]`}>
         
         <p
         className='w-full px-[16px] py-[16px] rounded-[8px] bg-[#196fe1] text-[18px] font-semibold text-white'>

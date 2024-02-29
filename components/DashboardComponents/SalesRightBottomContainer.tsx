@@ -8,9 +8,12 @@ const SalesRightBottomContainer = () => {
     const { expandedSidebarShow } = useSelector(
         (state: RootState) => state.ExpandedSidebarShow
       );
+      const { isDarkModeEnableState } = useSelector(
+        (state: RootState) => state.IsDarkModeEnable
+      );
   return (
     <div
-    className={`w-full ${expandedSidebarShow ? 'h-full' : 'h-1/2'} rounded-[16px] drop-shadow-md bg-white py-[16px] px-[20px] flex flex-col gap-[20px]`}>
+    className={`w-full ${expandedSidebarShow ? 'h-full' : 'h-1/2'} transition-all duration-500 ${isDarkModeEnableState ? 'bg-black text-white' : 'bg-white'} rounded-[16px] drop-shadow-md py-[16px] px-[20px] flex flex-col gap-[20px]`}>
 
         <div
         className='w-full flex items-center justify-between'>

@@ -2,10 +2,15 @@ import Image from "next/image";
 import React from "react";
 import tempImage from "./icons/material-symbols_image.png";
 import Star from "../Star/Star";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const ReviewDetails = () => {
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
   return (
-    <div className="w-full bg-white flex flex-col gap-[40px] p-[32px] rounded-[24px] drop-shadow-md">
+    <div className={`w-full ${isDarkModeEnableState ? 'bg-black text-white' : 'bg-white'} flex flex-col gap-[40px] p-[32px] rounded-[24px] drop-shadow-md`}>
       <p className="text-[24px] font-[600]">User details</p>
       <div className="w-full flex justify-between flex-col 900px:flex-row gap-[20px]">
         <div className="flex flex-col gap-[24px]">

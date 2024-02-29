@@ -7,6 +7,9 @@ import ProductsIcon from "@/components/Sidebar/icons/Products.png";
 import AddProductIcon from "@/components/Sidebar/icons/Add_product.png";
 import TransactIons from "@/components/Sidebar/icons/Transactions.png";
 import ReviewsIcon from "@/components/Sidebar/icons/Reviews.png";
+import CategoryIcon from "@/components/Sidebar/icons/category.png";
+import InvoiceIcon from "@/components/Sidebar/icons/invoice.png";
+import TaxIcon from "@/components/Sidebar/icons/tax.png";
 import SettingsIcon from "@/components/Sidebar/icons/Settings.png";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
@@ -44,7 +47,7 @@ const ExpandedSidebar = () => {
       subMenus: [
         {
           name: "Invoice",
-          path: "/",
+          path: "/invoice_details",
         },
         {
           name: "Order Status",
@@ -133,7 +136,19 @@ const ExpandedSidebar = () => {
       to: "/attributes",
     },
     {
-      icon: ReviewsIcon,
+      icon: InvoiceIcon,
+      icon_name: "Invoice Detaials",
+      will_expand: false,
+      to: "/invoice_details",
+    },
+    {
+      icon: TaxIcon,
+      icon_name: "Taxes",
+      will_expand: false,
+      to: "/tax",
+    },
+    {
+      icon: CategoryIcon,
       icon_name: "Category Lists",
       will_expand: false,
       to: "/Categorylists",
@@ -150,15 +165,13 @@ const ExpandedSidebar = () => {
     <div
       className={`h-full w-full 700px:w-[220px] fixed top-[70px] left-0 bg-[#81b4f8] box-border py-[32px] px-[16px] flex flex-col items-center z-20 ${
         expandedSidebarShow ? "translate-x-0" : "-translate-x-full"
-      } transition-all duration-500`}
-    >
+      } transition-all duration-500`}>
       <div
         className="w-[40px] h-[40px] rounded-full bg-white cursor-pointer flex items-center justify-center"
         onClick={() => {
           setActiveSubExpands(0);
           dispatch(disableExpandedSidebarShow());
-        }}
-      >
+        }}>
         <Image
           src={LockedIcon}
           alt="Lock Open"
@@ -181,8 +194,7 @@ const ExpandedSidebar = () => {
                     (activeSubExpands === index
                       ? setActiveSubExpands(0)
                       : setActiveSubExpands(index));
-                }}
-              >
+                }}>
                 <Link href={icon_details.to}>
                   <div className="w-full flex items-center gap-[6px]">
                     <Image
@@ -201,8 +213,7 @@ const ExpandedSidebar = () => {
                   <div
                     className={`text-white ${
                       activeSubExpands === index ? "rotate-180" : "rotate-0"
-                    } transition-all duration-500`}
-                  >
+                    } transition-all duration-500`}>
                     <KeyboardArrowDownIcon />
                   </div>
                 )}

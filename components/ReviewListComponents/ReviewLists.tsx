@@ -3,25 +3,30 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Star from "../Star/Star";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const ReviewLists = () => {
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
   return (
-    <div className="w-full bg-white drop-shadow-md rounded-[16px] p-[32px] flex flex-col gap-[32px]">
+    <div className={`w-full ${isDarkModeEnableState ? 'bg-black text-white' : 'bg-white'} drop-shadow-md rounded-[16px] p-[32px] flex flex-col gap-[32px]`}>
       <div className="flex items-center gap-[30px] flex-wrap">
       <div className="w-[210px] px-[10px] rounded-[4px] border border-[#71a7ef] cursor-pointer relative text-[14px]">
-          <select name="" id="" className="w-full py-[10px] outline-none border-none">
+          <select name="" id="" className="w-full py-[10px] outline-none border-none bg-transparent">
             <option value="">All</option>
             <option value="">lorem</option>
           </select>
         </div>
         <div className="w-[210px] px-[10px] rounded-[4px] border border-[#71a7ef] cursor-pointer relative text-[14px]">
-          <select name="" id="" className="w-full py-[10px] outline-none border-none">
+          <select name="" id="" className="w-full py-[10px] outline-none border-none bg-transparent">
             <option value="">Above 4+</option>
             <option value="">lorem</option>
           </select>
         </div>
         <div className="w-[210px] px-[10px] rounded-[4px] border border-[#71a7ef] cursor-pointer relative text-[14px]">
-          <select name="" id="" className="w-full py-[10px] outline-none border-none">
+          <select name="" id="" className="w-full py-[10px] outline-none border-none bg-transparent">
             <option value="">Months</option>
             <option value="">lorem</option>
           </select>
@@ -60,7 +65,7 @@ const ReviewLists = () => {
             <select
               name=""
               id=""
-              className="w-full py-[8px] outline-none border-none"
+              className="w-full py-[8px] outline-none border-none bg-transparent"
             >
               <option value="">Sheet 01</option>
               <option value="">Sheet 02</option>

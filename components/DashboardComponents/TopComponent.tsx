@@ -4,6 +4,8 @@ import OrdersIcon from '@/components/DashboardComponents/icons/Orders.png'
 import ShippingIcon from '@/components/DashboardComponents/icons/Shipping.png'
 import EarningIcon from '@/components/DashboardComponents/icons/Earning.png'
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const TopComponent = () => {
   const boxArray = [
@@ -33,9 +35,13 @@ const TopComponent = () => {
     },
   ];
 
+  const { isDarkModeEnableState } = useSelector(
+    (state: RootState) => state.IsDarkModeEnable
+  );
+
   return (
     <div className="w-full">
-      <p className="text-[36px] font-semibold flex flex-col 1300px:flex-row items-baseline">
+      <p className={`transition-all duration-500 ${isDarkModeEnableState && 'text-white'} text-[36px] font-semibold flex flex-col 1300px:flex-row items-baseline`}>
         Dashboard{" "}
         <span className="text-[12px]">Whole data about your business here</span>
       </p>
@@ -44,7 +50,7 @@ const TopComponent = () => {
         {boxArray.map((boxDetails, index) => {
           return (
             <div
-              className="w-full px-[16px] py-[24px] bg-white rounded-[8px] drop-shadow-md flex flex-col items-center gap-[16px] cursor-pointer"
+              className={`w-full px-[16px] py-[24px] ${isDarkModeEnableState ? 'bg-black text-white' : 'bg-white'} rounded-[8px] drop-shadow-md flex flex-col items-center gap-[16px] cursor-pointer`}
               key={index}
             >
               <div className="w-full flex items-center justify-center gap-[10px]">
@@ -67,7 +73,7 @@ const TopComponent = () => {
                 </div>
               </div>
 
-              <p className="text-[12px] text-[#b3b3b3]">
+              <p className={`text-[12px] ${isDarkModeEnableState ? 'text-white' : 'text-[#b3b3b3]'}`}>
                 {boxDetails.detailsDesc}
               </p>
             </div>

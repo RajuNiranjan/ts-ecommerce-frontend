@@ -20,7 +20,6 @@ const LogInPage = dynamic(
 
 export default function Home() {
   
-
   return (
     <LogInPage />
   );
