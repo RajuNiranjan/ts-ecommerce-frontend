@@ -2,6 +2,8 @@ import Link from "next/link";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export interface LogInProp {
   email: string;
@@ -14,6 +16,8 @@ const LogIn = () => {
     password: "",
   });
 
+  const router = useRouter();
+
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleChangeText = (e: ChangeEvent<HTMLInputElement>) => {
@@ -25,8 +29,21 @@ const LogIn = () => {
     }));
   };
 
-  const handleSubmitRegisterForm = (e: FormEvent<HTMLFormElement>) => {
-    console.log(logInForm);
+  const handleSubmitRegisterForm = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const apiUri = process.env.NEXT_PUBLIC_API_URL;
+      const res = await axios.post(`${apiUri}/api/auth/login`, logInForm);
+      const data = res.data;
+      console.log(data);
+      setLogInForm({
+        email: "",
+        password: "",
+      });
+      router.push("/register");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
