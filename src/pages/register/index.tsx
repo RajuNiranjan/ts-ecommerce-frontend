@@ -4,6 +4,13 @@ import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import {
+  authFailure,
+  authStart,
+  authSuccess,
+} from "../../store/Actions/userSlice.action";
+import { RootState } from "../../store/store";
+import { useDispatch, useSelector } from "react-redux";
 
 export interface RegisterProp {
   userName: string;
@@ -17,8 +24,10 @@ const Register = () => {
     email: "",
     password: "",
   });
-
+  const dispatch = useDispatch();
   const router = useRouter();
+
+  const { loading } = useSelector((state: RootState) => state.user);
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -33,11 +42,13 @@ const Register = () => {
 
   const handleSubmitRegisterForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    dispatch(authStart());
     try {
       const apiUri = process.env.NEXT_PUBLIC_API_URL;
       const res = await axios.post(`${apiUri}/api/auth/register`, registerForm);
       const data = res.data;
       console.log(data);
+      dispatch(authSuccess(data));
       setRegisterForm({
         userName: "",
         email: "",
@@ -47,6 +58,7 @@ const Register = () => {
       console.log(registerForm);
     } catch (error) {
       console.log("error--->", error);
+      dispatch(authFailure("reg failed"));
     }
   };
 
@@ -112,7 +124,7 @@ const Register = () => {
           type="submit"
           className="p-3 rounded-full border bg-cyan-800 text-white"
         >
-          Register
+          {loading ? "loading..." : "Register"}
         </button>
 
         <small className="text-center">
