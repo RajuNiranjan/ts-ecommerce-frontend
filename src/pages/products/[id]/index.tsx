@@ -9,11 +9,11 @@ const SingleProduct = () => {
       <div className="w-full h-screen grid grid-cols-2 gap-4 text-white px-14">
         <div className="relative h-max">
           <Image
-            src="https://i.pinimg.com/236x/78/ef/9d/78ef9d459126fa10c1091dbcbf89d249.jpg"
+            src="https://d30b9hrf6faw09.cloudfront.net/upload/202408011800050412a2b0-e993-439f-9fd3-09f600685db0.jpeg"
             alt="shirt_image"
             width={500}
             height={500}
-            className="w-full h-full "
+            className="w-full h-full rounded-lg"
           />
           <div className="absolute z-40 top-10 right-10">
             <FavoriteBorderIcon />
@@ -24,31 +24,12 @@ const SingleProduct = () => {
           <h2>$ 30.56</h2>
           {/* RALATED IMAGES */}
           <div className="flex flex-wrap gap-4">
-            <div className="w-14 h-20 rounded-sm">
+            <div className="w-16 h-18 rounded-sm">
               <Image
-                src="https://i.pinimg.com/236x/78/ef/9d/78ef9d459126fa10c1091dbcbf89d249.jpg"
+                src="https://d30b9hrf6faw09.cloudfront.net/upload/202408011800050412a2b0-e993-439f-9fd3-09f600685db0.jpeg"
                 alt="shirt_image"
-                width={56}
-                height={80}
-                className="w-full h-full "
-              />
-            </div>
-
-            <div className="w-14 h-20 rounded-sm">
-              <Image
-                src="https://i.pinimg.com/236x/78/ef/9d/78ef9d459126fa10c1091dbcbf89d249.jpg"
-                alt="shirt_image"
-                width={56}
-                height={80}
-                className="w-full h-full "
-              />
-            </div>
-            <div className="w-14 h-20 rounded-sm">
-              <Image
-                src="https://i.pinimg.com/236x/78/ef/9d/78ef9d459126fa10c1091dbcbf89d249.jpg"
-                alt="shirt_image"
-                width={56}
-                height={80}
+                width={500}
+                height={500}
                 className="w-full h-full "
               />
             </div>

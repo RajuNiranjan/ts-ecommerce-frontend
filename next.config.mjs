@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['i.pinimg.com']
+    domains: ['i.pinimg.com', "d30b9hrf6faw09.cloudfront.net"]
   },
   webpack: (config) => {
     config.resolve.extensions.push('.ts', '.tsx');
