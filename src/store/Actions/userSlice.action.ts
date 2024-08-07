@@ -7,14 +7,14 @@ interface User {
 }
 
 interface UserState {
-  user: User | null;
+  currentUser: User | null;
   token: string | null;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: UserState = {
-  user: null,
+  currentUser: null,
   token: null,
   loading: false,
   error: null,
@@ -33,14 +33,14 @@ const UserSlice = createSlice({
       action: PayloadAction<{ user: User; token: string }>
     ) => {
       state.loading = false;
-      state.user = action.payload.user;
+      state.currentUser = action.payload.user;
       state.token = action.payload.token;
       state.error = null;
     },
     authFailure: (state, action: PayloadAction<string>) => {
       state.loading = false;
       state.error = action.payload;
-      state.user = null;
+      state.currentUser = null;
       state.token = null;
     },
   },

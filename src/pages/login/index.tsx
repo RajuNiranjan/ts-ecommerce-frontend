@@ -52,7 +52,7 @@ const LogIn = () => {
         password: "",
       });
       dispatch(authSuccess(data));
-      router.push("/register");
+      router.push("/");
     } catch (error) {
       console.log(error);
       dispatch(authFailure("login failure"));
@@ -110,7 +110,7 @@ const LogIn = () => {
           type="submit"
           className="p-3 rounded-full border bg-cyan-800 text-white"
         >
-          LogIn
+          {loading ? "loading..." : "LogIn"}
         </button>
 
         <small className="text-center">
