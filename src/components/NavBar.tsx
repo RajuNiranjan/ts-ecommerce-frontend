@@ -16,22 +16,22 @@ const NavBar = () => {
   const pathName = usePathname();
 
   return (
-    <nav className="flex justify-between items-center px-14 h-20 shadow-lg sticky top-0 z-50">
-      <div></div>
+    <nav className="flex justify-between items-center px-14 h-20 text-white sticky top-0 z-50">
+      <div>
+        <Link href="/" className="text-2xl font-bold ">
+          Trend_set
+        </Link>
+      </div>
       <div className="flex items-center justify-center gap-4">
         <Link
           href="/wishlist"
-          className={`${
-            pathName === "/wishlist" && "text-red-500 transition-all dur500"
-          }`}
+          className={`${pathName === "/wishlist" && "transition-all dur500"}`}
         >
           {pathName === "/wishlist" ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </Link>
         <Link
           href="/cart"
-          className={`${
-            pathName === "/cart" && "text-yellow-500 transition-all dur500"
-          }`}
+          className={`${pathName === "/cart" && " transition-all dur500"}`}
         >
           {pathName === "/cart" ? (
             <ShoppingBagIcon />
@@ -45,7 +45,7 @@ const NavBar = () => {
               href="/profile"
               className={`border rounded-md p-2 ${
                 pathName === "/profile" &&
-                "bg-black  text-white  transition-all dur500"
+                "bg-white  text-black  transition-all dur500"
               }`}
             >
               {pathName === "/profile" ? <PersonIcon /> : <PersonOutlineIcon />}{" "}

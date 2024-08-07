@@ -9,8 +9,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <NavBar />
-        <Component {...pageProps} />
+        <div className="bg-[#BC9179]">
+          <NavBar />
+          <Component {...pageProps} />
+        </div>
       </PersistGate>
     </Provider>
   );
