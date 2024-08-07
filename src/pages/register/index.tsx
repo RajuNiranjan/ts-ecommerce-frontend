@@ -32,17 +32,21 @@ const Register = () => {
   };
 
   const handleSubmitRegisterForm = async (e: FormEvent<HTMLFormElement>) => {
-    if (
-      !registerForm.email ||
-      !registerForm.password ||
-      !registerForm.userName
-    ) {
-      return;
-    }
+    e.preventDefault();
     try {
+      const apiUri = process.env.NEXT_PUBLIC_API_URL;
+      const res = await axios.post(`${apiUri}/api/auth/register`, registerForm);
+      const data = res.data;
+      console.log(data);
+      setRegisterForm({
+        userName: "",
+        email: "",
+        password: "",
+      });
+      router.push("/login");
       console.log(registerForm);
     } catch (error) {
-      console.log(error);
+      console.log("error--->", error);
     }
   };
 
