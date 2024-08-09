@@ -27,6 +27,10 @@ const Register = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
+  const { currentUser } = useSelector((state: RootState) => state.user);
+
+  console.log("current user", currentUser);
+
   const { loading } = useSelector((state: RootState) => state.user);
 
   const [showPassword, setShowPassword] = useState<boolean>(false);

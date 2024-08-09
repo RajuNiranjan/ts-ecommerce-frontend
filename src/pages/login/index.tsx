@@ -26,7 +26,10 @@ const LogIn = () => {
   const router = useRouter();
 
   const dispatch = useDispatch();
-  const { loading } = useSelector((state: RootState) => state.user);
+  const { loading, currentUser } = useSelector(
+    (state: RootState) => state.user
+  );
+  console.log("current user form register", currentUser);
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
