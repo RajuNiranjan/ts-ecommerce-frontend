@@ -20,13 +20,15 @@ import {
 import axios, { AxiosError } from "axios";
 import { RootState } from "@/store/store";
 import { Loader2 } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 
 const LogIn = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const apiUri = process.env.NEXT_PUBLIC_API_URL;
   const { error, loading } = useSelector((state: RootState) => state.user);
-
+  const { toast } = useToast();
   const [logInFormData, setLogInFormData] = useState({
     userNameOrEmail: "",
     password: "",
@@ -100,6 +102,9 @@ const LogIn = () => {
       const data = res.data;
       console.log(data);
       dispatch(authSuccess(data));
+      toast({
+        title: "Login successfully",
+      });
       router.push("/");
     } catch (error) {
       const err = error as AxiosError;
@@ -107,6 +112,10 @@ const LogIn = () => {
       if (err.response?.data && typeof err.response.data === "object") {
         const errorMessage = (err.response.data as { message: string }).message;
         dispatch(authFailure(errorMessage));
+        toast({
+          title: errorMessage,
+          action: <ToastAction altText="Try again">Try again</ToastAction>,
+        });
       } else {
         console.log("An unexpected error occurred");
       }
@@ -152,7 +161,7 @@ const LogIn = () => {
                 <small className="text-red-500">{formError.password}</small>
               )}
             </div>
-            {error && <small className="text-red-500 mb-4">{error}</small>}
+
             <Button type="submit" className="w-full">
               {loading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />

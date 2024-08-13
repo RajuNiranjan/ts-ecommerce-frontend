@@ -20,6 +20,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { RootState } from "@/store/store";
 import { Loader2 } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -31,7 +33,7 @@ const Register = () => {
     email: "",
     password: "",
   });
-
+  const { toast } = useToast();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [formErrors, setFormErrors] = useState({
     userName: "",
@@ -127,6 +129,9 @@ const Register = () => {
       );
       const data = response.data;
       console.log(data);
+      toast({
+        title: "user registered successfully",
+      });
       dispatch(authSuccess(data));
       router.push("/");
     } catch (error) {
@@ -135,6 +140,10 @@ const Register = () => {
       if (err.response?.data && typeof err.response.data === "object") {
         const errorMessage = (err.response.data as { message: string }).message;
         dispatch(authFailure(errorMessage));
+        toast({
+          title: errorMessage,
+          action: <ToastAction altText="Try again">Try again</ToastAction>,
+        });
       } else {
         console.log("An unexpected error occurred");
       }
@@ -191,7 +200,6 @@ const Register = () => {
                 <small className="text-red-500">{formErrors.password}</small>
               )}
             </div>
-            {error && <small className="text-red-500 mb-4">{error}</small>}
             <Button type="submit" className="w-full">
               {loading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
