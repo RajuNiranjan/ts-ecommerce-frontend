@@ -36,15 +36,15 @@ const SingleProduct = () => {
         <div className="flex flex-col gap-2">
           <h1 className="font-bold font-xl ">Select Size</h1>
           <div className="flex gap-4">
-            <button className="h-7 w-7 border hover:bg-red-500 hover:text-white  transition-all duration-300 rounded-sm flex justify-center items-center ">
+            <Button className="h-7 w-7 border bg-transparent text-black hover:bg-red-500 hover:text-white  transition-all duration-300 rounded-sm flex justify-center items-center ">
               S
-            </button>
-            <button className="h-7 w-7 border hover:bg-red-500 hover:text-white  transition-all duration-300 rounded-sm flex justify-center items-center ">
+            </Button>
+            <Button className="h-7 w-7 border bg-transparent text-black hover:bg-red-500 hover:text-white  transition-all duration-300 rounded-sm flex justify-center items-center ">
               M
-            </button>
-            <button className="h-7 w-7 border hover:bg-red-500 hover:text-white transition-all duration-300 rounded-sm flex justify-center items-center ">
+            </Button>
+            <Button className="h-7 w-7 border bg-transparent text-black hover:bg-red-500 hover:text-white transition-all duration-300 rounded-sm flex justify-center items-center ">
               L
-            </button>
+            </Button>
           </div>
         </div>
         <p>
