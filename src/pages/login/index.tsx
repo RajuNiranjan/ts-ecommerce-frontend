@@ -10,11 +10,30 @@ import { Label } from "@/components/ui/label";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import {
+  authFailure,
+  authStarts,
+  authSuccess,
+} from "@/store/Actions/userSlice.action";
+import axios, { AxiosError } from "axios";
+import { RootState } from "@/store/store";
+import { Loader2 } from "lucide-react";
 
 const LogIn = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const apiUri = process.env.NEXT_PUBLIC_API_URL;
+  const { error, loading } = useSelector((state: RootState) => state.user);
+
   const [logInFormData, setLogInFormData] = useState({
-    userName: "",
-    email: "",
+    userNameOrEmail: "",
+    password: "",
+  });
+
+  const [formError, setFormError] = useState({
+    userNameOrEmail: "",
     password: "",
   });
 
@@ -26,10 +45,72 @@ const LogIn = () => {
       ...prev,
       [id]: value,
     }));
+    validateFields(id, value);
   };
 
-  const handleSubmitRegisterForm = (e: FormEvent<HTMLFormElement>) => {
+  const validateFields = (id: string, value: string) => {
+    switch (id) {
+      case "userNameOrEmail":
+        if (value.trim() === "") {
+          setFormError((prev) => ({
+            ...prev,
+            userNameOrEmail: "User name or email is required",
+          }));
+        } else {
+          setFormError((prev) => ({
+            ...prev,
+            userNameOrEmail: "",
+          }));
+        }
+        break;
+      case "password":
+        if (value.trim() === "") {
+          setFormError((prev) => ({
+            ...prev,
+            password: "Password is required",
+          }));
+        } else {
+          setFormError((prev) => ({
+            ...prev,
+            password: "",
+          }));
+        }
+        break;
+    }
+  };
+
+  const handleSubmitLoginForm = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     console.log(logInFormData);
+    dispatch(authStarts());
+
+    const isEmail = logInFormData.userNameOrEmail.includes("@");
+    const requestData = isEmail
+      ? {
+          email: logInFormData.userNameOrEmail,
+          password: logInFormData.password,
+        }
+      : {
+          userName: logInFormData.userNameOrEmail,
+          password: logInFormData.password,
+        };
+
+    try {
+      const res = await axios.post(`${apiUri}/api/auth/login`, requestData);
+      const data = res.data;
+      console.log(data);
+      dispatch(authSuccess(data));
+      router.push("/");
+    } catch (error) {
+      const err = error as AxiosError;
+
+      if (err.response?.data && typeof err.response.data === "object") {
+        const errorMessage = (err.response.data as { message: string }).message;
+        dispatch(authFailure(errorMessage));
+      } else {
+        console.log("An unexpected error occurred");
+      }
+    }
   };
 
   return (
@@ -40,28 +121,23 @@ const LogIn = () => {
         </CardHeader>
         <CardContent>
           <form
-            onSubmit={handleSubmitRegisterForm}
+            onSubmit={handleSubmitLoginForm}
             className="flex flex-col gap-4"
           >
             <div className="flex flex-col gap-2">
-              <Label htmlFor="userName">User Name</Label>
+              <Label htmlFor="userNameOrEmail">User Name or Email</Label>
               <Input
                 type="text"
-                id="userName"
-                placeholder="Alex Adem"
-                value={logInFormData.userName}
+                id="userNameOrEmail"
+                placeholder="Alex Adem or alexadem@gmal.com"
+                value={logInFormData.userNameOrEmail}
                 onChange={OnChangeText}
               />
-            </div>
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                type="email"
-                id="email"
-                placeholder="alexadem@gmal.com"
-                value={logInFormData.email}
-                onChange={OnChangeText}
-              />
+              {formError.userNameOrEmail && (
+                <small className="text-red-500">
+                  {formError.userNameOrEmail}
+                </small>
+              )}
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="password">Password</Label>
@@ -72,9 +148,17 @@ const LogIn = () => {
                 value={logInFormData.password}
                 onChange={OnChangeText}
               />
-            </div>{" "}
+              {formError.password && (
+                <small className="text-red-500">{formError.password}</small>
+              )}
+            </div>
+            {error && <small className="text-red-500 mb-4">{error}</small>}
             <Button type="submit" className="w-full">
-              Log In
+              {loading ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                "Log In"
+              )}
             </Button>
           </form>
         </CardContent>

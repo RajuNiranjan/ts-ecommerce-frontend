@@ -10,20 +10,22 @@ import { Label } from "@/components/ui/label";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import {
   authFailure,
   authStarts,
   authSuccess,
 } from "@/store/Actions/userSlice.action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
+import { RootState } from "@/store/store";
+import { Loader2 } from "lucide-react";
 
 const Register = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const apiUri = process.env.NEXT_PUBLIC_API_URL;
-
+  const { error, loading } = useSelector((state: RootState) => state.user);
   const [registerFormData, setRegisterFormData] = useState({
     userName: "",
     email: "",
@@ -128,7 +130,14 @@ const Register = () => {
       dispatch(authSuccess(data));
       router.push("/");
     } catch (error) {
-      console.log(error);
+      const err = error as AxiosError;
+
+      if (err.response?.data && typeof err.response.data === "object") {
+        const errorMessage = (err.response.data as { message: string }).message;
+        dispatch(authFailure(errorMessage));
+      } else {
+        console.log("An unexpected error occurred");
+      }
     }
   };
 
@@ -181,9 +190,14 @@ const Register = () => {
               {formErrors.password && (
                 <small className="text-red-500">{formErrors.password}</small>
               )}
-            </div>{" "}
+            </div>
+            {error && <small className="text-red-500 mb-4">{error}</small>}
             <Button type="submit" className="w-full">
-              Register
+              {loading ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                "Register"
+              )}
             </Button>
           </form>
         </CardContent>
