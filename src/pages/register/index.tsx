@@ -129,6 +129,7 @@ const Register = () => {
       );
       const data = response.data;
       console.log(data);
+      localStorage.setItem("token", data.token);
       toast({
         title: "user registered successfully",
       });

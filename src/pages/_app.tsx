@@ -10,7 +10,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <Toaster />
       <NavBar />
-      <Component {...pageProps} />
+      <div className="p-4">
+        <Component {...pageProps} />
+      </div>
     </Provider>
   );
 }

@@ -102,6 +102,7 @@ const LogIn = () => {
       const data = res.data;
       console.log(data);
       dispatch(authSuccess(data));
+      localStorage.setItem("token", data.token);
       toast({
         title: "Login successfully",
       });
