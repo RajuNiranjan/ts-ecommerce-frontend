@@ -31,8 +31,6 @@ const NavBar = () => {
       setToken(storedToken);
     }
   }, [token]);
-  const { user } = useSelector((state: RootState) => state.user);
-  console.log(user);
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);

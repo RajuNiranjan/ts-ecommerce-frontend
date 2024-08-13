@@ -1,20 +1,13 @@
 import React from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 
-const SingleProductCard = () => {
+const ProductCard = () => {
   return (
     <Card className="w-[250px] h-[400px] p-4 hover:shadow-xl">
       <CardContent className="p-0 h-[300px] ">
-        <Link href="/">
+        <Link href="/products/123">
           <Image
             src="https://d30b9hrf6faw09.cloudfront.net/upload/20240808200545WhatsApp%20Image%202024-08-08%20at%208.04.53%20PM.jpeg"
             width={500}
@@ -41,4 +34,4 @@ const SingleProductCard = () => {
   );
 };
 
-export default SingleProductCard;
+export default ProductCard;

@@ -83,7 +83,6 @@ const LogIn = () => {
 
   const handleSubmitLoginForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(logInFormData);
     dispatch(authStarts());
 
     const isEmail = logInFormData.userNameOrEmail.includes("@");
@@ -174,7 +173,7 @@ const LogIn = () => {
         </CardContent>
         <CardFooter className="flex justify-center items-center">
           <small>
-            Don't have an account ?{" "}
+            Don&apos;t have an account ?{" "}
             <Link className="text-blue-500 hover:underline" href="/register">
               Register
             </Link>
