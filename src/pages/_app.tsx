@@ -1,3 +1,4 @@
+import NavBar from "@/components/navBar";
 import { Toaster } from "@/components/ui/toaster";
 import { store } from "@/store/store";
 import "@/styles/globals.css";
@@ -8,6 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <Toaster />
+      <NavBar />
       <Component {...pageProps} />
     </Provider>
   );
