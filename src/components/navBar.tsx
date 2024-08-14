@@ -12,6 +12,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import BecomeASeller from "./becomeASeller";
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
@@ -148,8 +157,23 @@ const NavBar = () => {
               <DropdownMenuContent>
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="flex items-center gap-2 cursor-pointer hover:bg-red-500 hover:text-white">
-                  Become a Seller
+
+                <DropdownMenuItem asChild>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <div className="flex items-center gap-2 cursor-pointer hover:bg-red-500 p-2 rounded-lg hover:text-white">
+                        Become a Seller
+                      </div>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Become A Seller</DialogTitle>
+                        <DialogDescription>
+                          <BecomeASeller />
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={handleLogOutAccount}
