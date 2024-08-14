@@ -21,20 +21,16 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import BecomeASeller from "./becomeASeller";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const [token, setToken] = useState("");
+
   const pathName = usePathname();
   const router = useRouter();
-
-  useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      setToken(storedToken);
-    }
-  }, [token]);
+  const { user } = useSelector((state: RootState) => state.user);
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
@@ -65,7 +61,6 @@ const NavBar = () => {
 
   const handleLogOutAccount = () => {
     localStorage.clear();
-    setToken("");
     router.push("/");
   };
 
@@ -130,7 +125,7 @@ const NavBar = () => {
       </div>
 
       <div className="flex justify-center items-center">
-        {token ? (
+        {user ? (
           <div className="flex items-center gap-4">
             <Link
               href="/wishlist"
