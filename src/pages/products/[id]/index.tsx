@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Heart, ShoppingBag } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const SingleProduct = () => {
@@ -51,14 +52,19 @@ const SingleProduct = () => {
           Fabric : <span>Nylon</span>
         </p>
         <div className="flex gap-4 w-full">
-          <Button className="bg-red-500 hover:bg-red-600 w-full flex gap-1">
-            <ShoppingBag size={16} />
-            ADD TO BAG
-          </Button>
-          <Button className="w-full flex gap-1">
-            <Heart size={16} />
-            WISHLIST
-          </Button>
+          <Link href="/viewcart">
+            <Button className="bg-red-500 hover:bg-red-600 w-full flex gap-1">
+              <ShoppingBag size={16} />
+              ADD TO BAG
+            </Button>
+          </Link>
+          <Link href="/wishlist">
+            {" "}
+            <Button className="w-full flex gap-1">
+              <Heart size={16} />
+              WISHLIST
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
