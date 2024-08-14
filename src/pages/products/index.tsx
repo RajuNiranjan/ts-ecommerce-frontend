@@ -3,7 +3,7 @@ import React from "react";
 
 const Products = () => {
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap gap-2">
       <ProductCard />
       <ProductCard />
       <ProductCard />

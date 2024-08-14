@@ -87,13 +87,25 @@ const NavBar = () => {
                 className="w-[250px] absolute top-0 left-0 h-screen bg-white shadow-xl"
               >
                 <div className="flex flex-col p-4">
-                  <Link href="/" className="mb-4" onClick={handleShowMenu}>
+                  <Link
+                    href="/products"
+                    className="mb-4"
+                    onClick={handleShowMenu}
+                  >
                     SHIRTS
                   </Link>
-                  <Link href="/" className="mb-4" onClick={handleShowMenu}>
+                  <Link
+                    href="/products"
+                    className="mb-4"
+                    onClick={handleShowMenu}
+                  >
                     PANTS
                   </Link>
-                  <Link href="/" className="mb-4" onClick={handleShowMenu}>
+                  <Link
+                    href="/products"
+                    className="mb-4"
+                    onClick={handleShowMenu}
+                  >
                     T-SHIRTS
                   </Link>
                 </div>
@@ -108,9 +120,9 @@ const NavBar = () => {
       </div>
 
       <div className="hidden md:flex gap-4 items-center">
-        <Link href="/">SHIRTS</Link>
-        <Link href="/">PANTS</Link>
-        <Link href="/">T-SHIRTS</Link>
+        <Link href="/products">SHIRTS</Link>
+        <Link href="/products">PANTS</Link>
+        <Link href="/products">T-SHIRTS</Link>
       </div>
 
       <div className="flex justify-center items-center">
