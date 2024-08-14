@@ -19,7 +19,7 @@ import {
 } from "@/store/Actions/userSlice.action";
 import axios, { AxiosError } from "axios";
 import { RootState } from "@/store/store";
-import { Loader2 } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 
@@ -150,13 +150,22 @@ const LogIn = () => {
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="password">Password</Label>
-              <Input
-                type={showPassword ? "text" : "password"}
-                id="password"
-                placeholder="Password"
-                value={logInFormData.password}
-                onChange={OnChangeText}
-              />
+              <div className="relative">
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  placeholder="Password"
+                  value={logInFormData.password}
+                  onChange={OnChangeText}
+                />
+                <div className="absolute top-2.5 right-2.5">
+                  {showPassword ? (
+                    <EyeOff onClick={() => setShowPassword(!showPassword)} />
+                  ) : (
+                    <Eye onClick={() => setShowPassword(!showPassword)} />
+                  )}
+                </div>
+              </div>
               {formError.password && (
                 <small className="text-red-500">{formError.password}</small>
               )}

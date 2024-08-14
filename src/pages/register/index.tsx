@@ -19,7 +19,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { RootState } from "@/store/store";
-import { Loader2 } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 
@@ -40,6 +40,8 @@ const Register = () => {
     email: "",
     password: "",
   });
+
+  console.log("loading", loading);
 
   const OnChangeText = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -190,13 +192,24 @@ const Register = () => {
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="password">Password</Label>
-              <Input
-                type={showPassword ? "text" : "password"}
-                id="password"
-                placeholder="Password"
-                value={registerFormData.password}
-                onChange={OnChangeText}
-              />
+              <div className="relative">
+                {" "}
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  placeholder="Password"
+                  value={registerFormData.password}
+                  onChange={OnChangeText}
+                />
+                <div className="absolute top-2.5 right-2.5">
+                  {showPassword ? (
+                    <EyeOff onClick={() => setShowPassword(!showPassword)} />
+                  ) : (
+                    <Eye onClick={() => setShowPassword(!showPassword)} />
+                  )}
+                </div>
+              </div>
+
               {formErrors.password && (
                 <small className="text-red-500">{formErrors.password}</small>
               )}
