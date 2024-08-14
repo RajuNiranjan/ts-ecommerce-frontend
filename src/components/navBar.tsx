@@ -1,22 +1,17 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import ShimmerButton from "@/components/magicui/shimmer-button";
-import { CircleUser, Heart, Menu, ShoppingBag } from "lucide-react";
+import { CircleUser, Heart, LogOut, Menu, ShoppingBag } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
 import { usePathname, useRouter } from "next/navigation";
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
@@ -129,40 +124,42 @@ const NavBar = () => {
         {token ? (
           <div className="flex items-center gap-4">
             <Link
-              href="/"
+              href="/wishlist"
               className={`${
-                pathName === "/" && "text-red-500"
+                pathName === "/wishlist" && "text-red-500"
               } hover:text-red-500`}
             >
               <Heart />
             </Link>
             <Link
-              href="/"
+              href="/viewcart"
               className={`${
-                pathName === "/" && "text-red-500"
+                pathName === "/viewcart" && "text-red-500"
               } hover:text-red-500`}
             >
               <ShoppingBag />
             </Link>
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <CircleUser className="cursor-pointer" />
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Confirm Logout</AlertDialogTitle>
-                </AlertDialogHeader>
-                <AlertDialogDescription>
-                  Are you sure you want to logout from your Trend Set account?
-                </AlertDialogDescription>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={handleLogOutAccount}>
-                    Logout
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                {" "}
+                <CircleUser className="cursor-pointer hover:text-red-500" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="flex items-center gap-2 cursor-pointer hover:bg-red-500 hover:text-white">
+                  Become a Seller
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={handleLogOutAccount}
+                  className="flex items-center gap-2 cursor-pointer hover:bg-red-500 hover:text-white"
+                >
+                  Log Out
+                  <LogOut size={16} />
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         ) : (
           <Link href="/login">
